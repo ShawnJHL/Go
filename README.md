@@ -77,11 +77,17 @@ k := 3
 ### Print
 ------
 fmt.Println ()
+
 fmt.Printf ()
+
 fmt.Sprint ()
+
 %b = binary
+
 %t = boolean
+
 %v = value
+
 %T = type
 
 

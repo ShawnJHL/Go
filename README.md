@@ -1,29 +1,25 @@
 # Go
 ======
 
-
 ### Package
 ------
 Every go program is made up of packages.
-Programs start running in package main.
 
+Programs start running in package main.
 
 ### Import
 ------
 import "fmt"
 import "math"
 
-
 import (
 	"fmt"
 	"math"
 )
 
-
 ### Exported Names
 ------
 A name exported if it starts with a capital name like math.Pi
-
 
 ### Function
 ------
@@ -31,18 +27,15 @@ func main () {
 	fmt.Println (add (42, 13))
 }
 
-
 Integer return
 func add (x, y int) int {
 	return x + y, x
 }
 
-
 Multiple results
 func add (x int, y int) (int, int) {
 	return x + y, x
 }
-
 
 
 Named return
@@ -51,7 +44,6 @@ func split(sum int) (x, y int) {
 	y = sum - x
 	return
 }
-
 
 ### Variable
 ------
@@ -72,8 +64,6 @@ Short variable declaration (must be within a function)
 
 k := 3
 
-
-
 ### Print
 ------
 fmt.Println ()
@@ -89,7 +79,6 @@ fmt.Sprint ()
 %v = value
 
 %T = type
-
 
 ### Types
 ------
@@ -108,7 +97,6 @@ rune // alias for int32
 float32 float64
 
 complex64 complex128
-
 
 ### Constant
 ------

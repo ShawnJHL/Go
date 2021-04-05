@@ -1,14 +1,14 @@
 # Go
-======
+***
 
 ### Package
-------
+---
 Every go program is made up of packages.
 
 Programs start running in package main.
 
 ### Import
-------
+---
 import "fmt"
 import "math"
 
@@ -18,11 +18,11 @@ import (
 )
 
 ### Exported Names
-------
+---
 A name exported if it starts with a capital name like math.Pi
 
 ### Function
-------
+---
 func main () {
 	fmt.Println (add (42, 13))
 }
@@ -46,7 +46,7 @@ func split(sum int) (x, y int) {
 }
 
 ### Variable
-------
+---
 Variables without initializers
 
 var c, python, java bool
@@ -65,7 +65,7 @@ Short variable declaration (must be within a function)
 k := 3
 
 ### Print
-------
+---
 fmt.Println ()
 
 fmt.Printf ()
@@ -81,7 +81,7 @@ fmt.Sprint ()
 %T = type
 
 ### Types
-------
+---
 bool
 
 string
@@ -99,6 +99,6 @@ float32 float64
 complex64 complex128
 
 ### Constant
-------
+---
 Contstant variables do not change
 const Pi = 3.14

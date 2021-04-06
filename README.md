@@ -133,7 +133,7 @@ else {
 }
 
 
-### Switch
+### Defer
 ---
 Switch runs the first case that satisfies condition
 

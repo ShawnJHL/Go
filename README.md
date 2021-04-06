@@ -133,7 +133,7 @@ else {
 }
 
 
-### Defer
+### Switch
 ---
 Switch runs the first case that satisfies condition
 
@@ -163,7 +163,7 @@ default:
 }
 
 
-### Switch
+### Defer
 ---
 A defer statement defers the execution of a function until others are done and stacks
 
@@ -174,3 +174,82 @@ for i := 0; i < 10; i++ {
 }
 
 fmt.Println("done")
+
+### Methods
+---
+type Vertex struct {
+
+	X, Y float64
+	
+}
+
+v = OBJECT VARIABLE Vertex = TYPE METHOD NAME
+
+func (v Vertex) Abs() float64 {							func Abs(v Vertex) float64 {
+
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)						return math.Sqrt(v.X*v.X + v.Y*v.Y)
+	
+}										}
+
+func main() {
+
+	v := Vertex{3, 4}
+	
+	fmt.Println(Abs(v))
+	
+}
+
+WITH NON-STRUCT TYPE
+
+type MyFloat float64
+
+func (f MyFloat) Abs() float64 {
+
+	if f < 0 {
+	
+		return float64(-f)
+		
+	}
+	
+	return float64(f)
+	
+}
+
+### Pointer
+---
+type Vertex struct {
+
+	X, Y float64
+	
+}
+
+func (v *Vertex) Scale(f float64) {
+
+	v.X = v.X * f
+	
+	v.Y = v.Y * f
+	
+}
+
+### Interface
+---
+type Abser interface {
+
+	Abs() float64
+	
+}
+
+### Error Handling
+---
+f = i.(float64) // ERROR
+
+fmt.Println(f)
+
+f, ok := i.(float64) // OK
+
+fmt.Println(f, ok)
+
+
+RESEARCH
+INTERFACE
+STRINGER/ERROR STATE

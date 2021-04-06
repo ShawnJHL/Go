@@ -102,3 +102,75 @@ complex64 complex128
 ---
 Contstant variables do not change
 const Pi = 3.14
+
+### For loop / While loop
+---
+init; condition; post
+
+for i := 0; i < 10; i++ {
+	fmt.Println (i)
+}
+
+init and post statments are optional
+
+sum := 1
+for sum < 1000 {
+	sum += sum
+}
+
+### If
+---
+v = 5
+if v < 10 {
+}
+
+If can start with variable declaration and also available in else blocks
+
+if v := 5; v < 10 {
+}
+else {
+	v += 5
+}
+
+
+### Switch
+---
+Switch runs the first case that satisfies condition
+
+switch os := runtime.GOOS; os {
+case "darwin":
+	fmt.Println("OS X.")
+case "linux":
+	fmt.Println("Linux.")
+default:
+	// freebsd, openbsd,
+	// plan9, windows...
+	fmt.Printf("%s.\n", os)
+}
+
+Switch without a condition is the same as switch true. 
+
+os := runtime.GOOS
+switch {
+case os == "darwin":
+	fmt.Println("OS X.")
+case os =="linux":
+	fmt.Println("Linux.")
+default:
+	// freebsd, openbsd,
+	// plan9, windows...
+	fmt.Printf("%s.\n", os)
+}
+
+
+### Switch
+---
+A defer statement defers the execution of a function until others are done and stacks
+
+fmt.Println("counting")
+
+for i := 0; i < 10; i++ {
+	defer fmt.Println(i)
+}
+
+fmt.Println("done")

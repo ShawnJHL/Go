@@ -1,7 +1,15 @@
 # Go
 ***
 ### Resources
+---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX
+
+
+### Research
+---
+INTERFACE
+
+STRINGER/ERROR STATE
 
 ### Package
 ---
@@ -12,11 +20,15 @@ Programs start running in package main.
 ### Import
 ---
 import "fmt"
+
 import "math"
 
 import (
+
 	"fmt"
+	
 	"math"
+	
 )
 
 ### Exported Names
@@ -26,7 +38,9 @@ A name exported if it starts with a capital name like math.Pi
 ### Function
 ---
 func main () {
+
 	fmt.Println (add (42, 13))
+	
 }
 
 Integer return
@@ -35,15 +49,22 @@ func add (x, y int) int {
 }
 
 Multiple results
+
 func add (x int, y int) (int, int) {
+
 	return x + y, x
+	
 }
 
 
 Named return
+
 func split(sum int) (x, y int) {
+
 	x = sum * 4 / 9
+	
 	y = sum - x
+	
 	return
 }
 
@@ -58,8 +79,11 @@ Variables with initializers
 var i, j int = 1, 2
 
 var (
+
 	i int = 1
+	
 	j int = 2
+	
 )
 
 Short variable declaration (must be within a function)
@@ -89,6 +113,7 @@ bool
 string
 
 int  int8  int16  int32  int64
+
 uint uint8 uint16 uint32 uint64 uintptr
 
 byte // alias for uint8
@@ -103,6 +128,7 @@ complex64 complex128
 ### Constant
 ---
 Contstant variables do not change
+
 const Pi = 3.14
 
 ### For loop / While loop
@@ -110,28 +136,39 @@ const Pi = 3.14
 init; condition; post
 
 for i := 0; i < 10; i++ {
+
 	fmt.Println (i)
+	
 }
 
 init and post statments are optional
 
 sum := 1
+
 for sum < 1000 {
+
 	sum += sum
+	
 }
 
 ### If
 ---
 v = 5
+
 if v < 10 {
+
 }
 
 If can start with variable declaration and also available in else blocks
 
 if v := 5; v < 10 {
+
 }
+
 else {
+
 	v += 5
+	
 }
 
 
@@ -140,28 +177,47 @@ else {
 Switch runs the first case that satisfies condition
 
 switch os := runtime.GOOS; os {
+
 case "darwin":
+
 	fmt.Println("OS X.")
+	
 case "linux":
+
 	fmt.Println("Linux.")
+	
 default:
+
 	// freebsd, openbsd,
+	
 	// plan9, windows...
+	
 	fmt.Printf("%s.\n", os)
+	
 }
 
 Switch without a condition is the same as switch true. 
 
 os := runtime.GOOS
+
 switch {
+
 case os == "darwin":
+
 	fmt.Println("OS X.")
+	
 case os =="linux":
+
 	fmt.Println("Linux.")
+	
 default:
+
 	// freebsd, openbsd,
+	
 	// plan9, windows...
+	
 	fmt.Printf("%s.\n", os)
+	
 }
 
 
@@ -172,7 +228,9 @@ A defer statement defers the execution of a function until others are done and s
 fmt.Println("counting")
 
 for i := 0; i < 10; i++ {
+
 	defer fmt.Println(i)
+	
 }
 
 fmt.Println("done")
@@ -250,8 +308,3 @@ fmt.Println(f)
 f, ok := i.(float64) // OK
 
 fmt.Println(f, ok)
-
-
-RESEARCH
-INTERFACE
-STRINGER/ERROR STATE

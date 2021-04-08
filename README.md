@@ -11,6 +11,8 @@ INTERFACE
 
 STRINGER/ERROR STATE
 
+p  = &Vertex{1, 2}
+
 ### Package
 ---
 Every go program is made up of packages.
@@ -33,7 +35,7 @@ import (
 
 ### Exported Names
 ---
-A name exported if it starts with a capital name like math.Pi
+A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME. EX. math.Pi
 
 ### Function
 ---
@@ -43,12 +45,13 @@ func main () {
 	
 }
 
-Integer return
+SINGLE INTEGER RETURN
+
 func add (x, y int) int {
 	return x + y, x
 }
 
-Multiple results
+MULTIPULE RETURN
 
 func add (x int, y int) (int, int) {
 
@@ -57,7 +60,7 @@ func add (x int, y int) (int, int) {
 }
 
 
-Named return
+NAMED RETURN
 
 func split(sum int) (x, y int) {
 
@@ -70,11 +73,11 @@ func split(sum int) (x, y int) {
 
 ### Variable
 ---
-Variables without initializers
+VARIABLES WITHOUT INITALIZERS
 
 var c, python, java bool
 
-Variables with initializers
+VARIABLES WITH INITIALIZERS
 
 var i, j int = 1, 2
 
@@ -86,7 +89,7 @@ var (
 	
 )
 
-Short variable declaration (must be within a function)
+SHORT VARIABLE DECLARATION (MUST BE WITHIN A FUNCTION)
 
 k := 3
 
@@ -97,6 +100,8 @@ fmt.Println ()
 fmt.Printf ()
 
 fmt.Sprint ()
+
+%d = digit
 
 %b = binary
 
@@ -118,8 +123,7 @@ uint uint8 uint16 uint32 uint64 uintptr
 
 byte // alias for uint8
 
-rune // alias for int32
-     // represents a Unicode code point
+rune // alias for int32, represents a Unicode code point
 
 float32 float64
 
@@ -133,7 +137,7 @@ const Pi = 3.14
 
 ### For loop / While loop
 ---
-init; condition; post
+INIT; CONDITION; POST
 
 for i := 0; i < 10; i++ {
 
@@ -141,13 +145,23 @@ for i := 0; i < 10; i++ {
 	
 }
 
-init and post statments are optional
+INIT, CONDITION, POST ARE OPTIONAL (INIFINITE LOOP)
 
 sum := 1
 
 for sum < 1000 {
 
 	sum += sum
+	
+}
+
+RANGE TO ITERATE SLICE OR MAP (YOU CAN USE _ AS VARIABLE TO UNASSIGN)
+
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+for i, v := range pow {
+
+	fmt.Printf("2**%d = %d\n", i, v)
 	
 }
 
@@ -159,7 +173,7 @@ if v < 10 {
 
 }
 
-If can start with variable declaration and also available in else blocks
+IF CAN START WITH VARIABLE DECLARATION AND THIS VARIABLE IS ALSO AVAILABLE IN ELSE BLOCKS
 
 if v := 5; v < 10 {
 
@@ -174,7 +188,7 @@ else {
 
 ### Switch
 ---
-Switch runs the first case that satisfies condition
+SWITCH RUNS THE FIRST CAST THAT SATISFIES CONDITION
 
 switch os := runtime.GOOS; os {
 
@@ -196,7 +210,7 @@ default:
 	
 }
 
-Switch without a condition is the same as switch true. 
+SWITCH WITHOUT A CONDITION IS SAME AS SWITCH TRUE
 
 os := runtime.GOOS
 
@@ -223,7 +237,7 @@ default:
 
 ### Defer
 ---
-A defer statement defers the execution of a function until others are done and stacks
+A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE AND STACKS
 
 fmt.Println("counting")
 
@@ -234,6 +248,221 @@ for i := 0; i < 10; i++ {
 }
 
 fmt.Println("done")
+
+### Pointer
+---
+i, j := 42, 2701
+
+p := &i         // point to i
+
+fmt.Println(*p) // read i through the pointer
+
+*p = 21         // set i through the pointer
+
+fmt.Println(i)  // see the new value of i
+
+POINTER AS INPUT
+
+type Vertex struct {
+
+	X, Y float64
+	
+}
+
+func (v *Vertex) Scale(f float64) {
+
+	v.X = v.X * f
+	
+	v.Y = v.Y * f
+	
+}
+
+### Struct
+---
+type Vertex struct {
+
+	X int
+	
+	Y int
+	
+}
+
+func main() {
+
+	v := Vertex{1, 2}
+	
+	v.X = 4
+	
+	fmt.Println(v.X)
+}
+
+### Array
+---
+ARRAYS CANNOT BE RESIZED
+
+var a [2]string
+
+a[0] = "Hello"
+
+a[1] = "World"
+	
+primes := [6]int{2, 3, 5, 7, 11, 13}
+
+### Slice
+---
+SLICE IS DYNAMICALLY SIZED
+STARTING INDEX WILL COMPLETELY DROP PREVIOUS ELEMENTS
+
+q := []int{2, 3, 5, 7, 11, 13}
+
+r := []bool{true, false, true, true, false, true}
+
+s := []struct {
+
+	i int
+	
+	b bool
+	
+}{
+
+	{2, true},
+	
+	{3, false}
+}
+
+SLICE IS LIKE REFERENCES TO ARRAYS (IF YOU CHANGE IT, ORIGINAL ARRAY/SLICE CHANGES)
+
+names := [2]string{
+
+	"John",
+	
+	"Paul",
+	
+}
+
+b := names[1:3]
+
+b[0] = "XXX"
+
+SLICE HAS LENGTH AND CAPACITY
+
+s := []int{2, 3, 5, 7, 11, 13}
+
+printSlice(s)
+
+// Slice the slice to give it zero length.
+
+s = s[:0]
+
+printSlice(s)
+
+// Extend its length.
+
+s = s[:4]
+
+printSlice(s)
+
+// Drop its first two values.
+
+s = s[2:]
+
+printSlice(s)
+
+s = s[0:4]
+
+printSlice(s)
+
+func printSlice(s []int) {
+
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+	
+}
+
+ZERO VALUE OF SLICE IS NIL
+
+var s []int
+
+if s == nil {
+
+	fmt.Println("nil!")
+	
+}
+
+MAKE CAN BE USED TO SET LENGTH AND CAPACITY
+
+b := make([]int, 0, 5) // len(b)=0, cap(b)=5
+
+SLICE CAN HAVE SLICE
+
+board := [][]string{
+
+	[]string{"_", "_", "_"},
+
+	[]string{"_", "_", "_"},
+
+	[]string{"_", "_", "_"},
+
+}
+
+board[0][0] = "X"
+
+APPEND
+
+var s []int
+
+s = append(s, 0)
+
+### MAP
+
+type Vertex struct {
+
+	Lat, Long float64
+	
+}
+
+var m map[string]Vertex
+
+m = make(map[string]Vertex)
+
+m["Bell Labs"] = Vertex{
+
+	40.68433, -74.39967,
+
+}
+
+OR
+
+var m = map[string]Vertex{
+
+	"Bell Labs": Vertex{
+	
+		40.68433, -74.39967,
+
+	},
+	"Google": Vertex{
+	
+		37.42202, -122.08408,
+
+	},
+}
+
+OR
+
+var m = map[string]Vertex{
+
+	"Bell Labs": {40.68433, -74.39967},
+	
+	"Google":    {37.42202, -122.08408},
+	
+}
+
+INSERT/RETRIEVE/DELETE
+
+m[key] = elem / elem = m[key] / delete(m, key)
+
+TEST IF KEY EXIST (ok = TRUE IF EXIST OTHERWISE FALSE AND v = 0)
+
+elem, ok = m[key]
 
 ### Methods
 ---
@@ -275,19 +504,64 @@ func (f MyFloat) Abs() float64 {
 	
 }
 
-### Pointer
+### FUNCTION AS VALUE
 ---
-type Vertex struct {
+FUNCTIONS CAN BE PASSED AROUND LIKE VALUES
 
-	X, Y float64
+func compute(fn func(float64, float64) float64) float64 {
+
+	return fn(3, 4)
 	
 }
 
-func (v *Vertex) Scale(f float64) {
+func main() {
 
-	v.X = v.X * f
+	hypot := func(x, y float64) float64 {
 	
-	v.Y = v.Y * f
+		return math.Sqrt(x*x + y*y)
+		
+	}
+	
+	fmt.Println(hypot(5, 12))
+
+	fmt.Println(compute(hypot))
+	
+	fmt.Println(compute(math.Pow))
+}
+
+### FUNCTION CLOSURE
+---
+A CLOSURE IS A FUNCTION VALUE THAT REFERENCES VARIABLE FROM OUTSIDE ITS BODY
+
+func adder() func(int) int {
+
+	sum := 0
+	
+	return func(x int) int {
+	
+		sum += x
+		
+		return sum
+		
+	}
+	
+}
+
+func main() {
+
+	pos, neg := adder(), adder()
+	
+	for i := 0; i < 10; i++ {
+	
+		fmt.Println(
+		
+			pos(i),
+			
+			neg(-2*i),
+			
+		)
+		
+	}
 	
 }
 

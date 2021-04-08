@@ -25,13 +25,17 @@ Programs start running in package main.
 
 ### Import
 ---
-import "fmt"							import (
+import "fmt"
 
-import "math"								"fmt
+import "math"
 
-									"math"
+import (
 
-								)
+	"fmt"
+	
+	"math"
+	
+	)
 
 YOU HAVE TO IMPORT SUBPACKAGES
 

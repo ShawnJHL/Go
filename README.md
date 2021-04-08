@@ -13,6 +13,10 @@ STRINGER/ERROR STATE
 
 p  = &Vertex{1, 2}
 
+## COMPILE/RUN
+---
+go run script.go
+
 ### Package
 ---
 Every go program is made up of packages.
@@ -21,27 +25,69 @@ Programs start running in package main.
 
 ### Import
 ---
-import "fmt"
+import "fmt"							import (
 
-import "math"
+import "math"								"fmt
 
-import (
+									"math"
+									
+								)
 
-	"fmt"
-	
-	"math"
-	
-)
+YOU HAVE TO IMPORT SUBPACKAGES
+
+import "math/rand"
+
+TO USE rand.Intn(100)
+
 
 ### Exported Names
 ---
-A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME. EX. math.Pi
+A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME.
+
+ALL THE FUNCTIONS YOU ARE USING FROM A PACKAGE START WITH CAPITAL LETTERS.
+
+math.Pi, fmt.Println ()
+
+### COMMENTS
+---
+// FOR SINGLE LINE
+/* */ FOR MULTIPLE LINES
+
+### Variable
+---
+VARIABLES WITHOUT INITALIZERS
+
+var c, python, java bool
+
+VARIABLES WITH INITIALIZERS
+
+var i, j int = 1, 2
+
+var (
+
+	i int = 1
+	
+	j int = 2
+	
+)
+
+SHORT VARIABLE DECLARATION (MUST BE WITHIN A FUNCTION)
+
+k := 3
+
+### Constant
+---
+Contstant variables do not change
+
+const Pi = 3.14
 
 ### Function
 ---
+MAIN FUNCTION WILL ALWAYS RUN
+
 func main () {
 
-	fmt.Println (add (42, 13))
+	fmt.Println ("HELLO WORLD")
 	
 }
 
@@ -71,33 +117,11 @@ func split(sum int) (x, y int) {
 	return
 }
 
-### Variable
----
-VARIABLES WITHOUT INITALIZERS
-
-var c, python, java bool
-
-VARIABLES WITH INITIALIZERS
-
-var i, j int = 1, 2
-
-var (
-
-	i int = 1
-	
-	j int = 2
-	
-)
-
-SHORT VARIABLE DECLARATION (MUST BE WITHIN A FUNCTION)
-
-k := 3
-
 ### Print
 ---
-fmt.Println ()
+fmt.Println () - TO PRINT
 
-fmt.Printf ()
+fmt.Printf () - TO PRINT WITH ARGUMENTS
 
 fmt.Sprint ()
 
@@ -128,12 +152,6 @@ rune // alias for int32, represents a Unicode code point
 float32 float64
 
 complex64 complex128
-
-### Constant
----
-Contstant variables do not change
-
-const Pi = 3.14
 
 ### For loop / While loop
 ---
@@ -252,6 +270,9 @@ fmt.Println("done")
 ### Pointer
 ---
 i, j := 42, 2701
+
+& IS POINT TO MEMORY ADDRESS. * IS READ THROUGH MEMORY ADDRESS
+AFTER YOU POINT, YOU WILL NEED TO USE * OTHERWISE IT WILL JUST GIVE MEMORY LOCATION RATHER THAN VALUE
 
 p := &i         // point to i
 

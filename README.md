@@ -3,7 +3,8 @@
 ### Resources
 ---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX
-
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q
+freeCodeCamp.org - https://www.youtube.com/watch?v=YS4e4q9oBaU
 
 ### Research
 ---
@@ -15,7 +16,13 @@ p  = &Vertex{1, 2}
 
 ## COMPILE/RUN
 ---
+TO COMILE AND RUN
+
 go run script.go
+
+TO JUST COMPILE. THE COMPILED FILE CAN BE RUN ON ANY OS.
+
+go build script.go
 
 ### Package
 ---
@@ -42,7 +49,6 @@ TO IMPORT SUBPACKAGES
 import "math/rand"
 
 TO USE rand.Intn(100)
-
 
 ### Exported Names
 ---
@@ -84,6 +90,12 @@ k := 3
 Contstant variables do not change
 
 const Pi = 3.14
+
+### QUOTES
+---
+"" REPRESENTS A COLLECTION OF CHARACTERS (STRING
+
+'' REPRESENTS A CHARACTER
 
 ### Function
 ---
@@ -311,7 +323,8 @@ type Vertex struct {
 
 func main() {
 
-	v := Vertex{1, 2}
+	v := Vertex {1, 2}
+	v := Vertex {X:1, Y: 2}
 	
 	v.X = 4
 	

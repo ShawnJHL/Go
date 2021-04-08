@@ -203,7 +203,6 @@ else {
 	
 }
 
-
 ### Switch
 ---
 SWITCH RUNS THE FIRST CAST THAT SATISFIES CONDITION
@@ -252,27 +251,11 @@ default:
 	
 }
 
-
-### Defer
----
-A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE AND STACKS
-
-fmt.Println("counting")
-
-for i := 0; i < 10; i++ {
-
-	defer fmt.Println(i)
-	
-}
-
-fmt.Println("done")
-
 ### Pointer
 ---
 i, j := 42, 2701
 
 & IS POINT TO MEMORY ADDRESS. * IS READ THROUGH MEMORY ADDRESS
-AFTER YOU POINT, YOU WILL NEED TO USE * OTHERWISE IT WILL JUST GIVE MEMORY LOCATION RATHER THAN VALUE
 
 p := &i         // point to i
 
@@ -297,6 +280,20 @@ func (v *Vertex) Scale(f float64) {
 	v.Y = v.Y * f
 	
 }
+
+### Defer
+---
+A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE AND STACKS
+
+fmt.Println("counting")
+
+for i := 0; i < 10; i++ {
+
+	defer fmt.Println(i)
+	
+}
+
+fmt.Println("done")
 
 ### Struct
 ---

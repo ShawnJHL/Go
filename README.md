@@ -37,7 +37,7 @@ import (
 	
 	)
 
-YOU HAVE TO IMPORT SUBPACKAGES
+TO IMPORT SUBPACKAGES
 
 import "math/rand"
 

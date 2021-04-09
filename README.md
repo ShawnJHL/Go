@@ -3,7 +3,9 @@
 ### Resources
 ---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX
+
 Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q
+
 freeCodeCamp.org - https://www.youtube.com/watch?v=YS4e4q9oBaU
 
 ### Research
@@ -281,22 +283,6 @@ fmt.Println(*p) // read i through the pointer
 
 fmt.Println(i)  // see the new value of i
 
-POINTER AS INPUT
-
-type Vertex struct {
-
-	X, Y float64
-	
-}
-
-func (v *Vertex) Scale(f float64) {
-
-	v.X = v.X * f
-	
-	v.Y = v.Y * f
-	
-}
-
 ### Defer
 ---
 A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE AND STACKS
@@ -499,8 +485,22 @@ TEST IF KEY EXIST (ok = TRUE IF EXIST OTHERWISE FALSE AND v = 0)
 
 elem, ok = m[key]
 
-### Methods
+### FUNCTION VS METHOD
 ---
+FUNCTION CAN BE USED ANYWHERE WHEREAS METHODS ARE ASSOCIATED WITH TYPE
+
+IT IS POSSIBLE TO USE FUNCTION TO RECEIVE/MODIFY BY TAKING TYPE AS INPUT
+
+### VALUE RECEIVE METHOD
+---
+VALUE RECEIVER ONLY RECEIVES VALUES AND THAT'S ALL THEY CAN DO. THEY CANNOT CHANGE VALUES OF THE TYPE
+
+VALUCE RECEIVER CAN CHANGE VALUES BUT IT WILL ONLY BE WITHIN SCOPE
+
+VALUE RECEIVER WORKS LIKE MAKING A COPY OF THE OBJECT.
+
+IF THE TYPE IS HUGE, IT IS MORE EFFICIENT TO USE POINTER RECEIVER. WHEREAS IF THE OBJECT IS SMALL (ATTRIBUTES), IT CAN BE MORE EFFICIENT TO USE VALUE RECEIVER. 
+
 type Vertex struct {
 
 	X, Y float64
@@ -509,17 +509,17 @@ type Vertex struct {
 
 v = OBJECT VARIABLE Vertex = TYPE METHOD NAME
 
-func (v Vertex) Abs() float64 {							func Abs(v Vertex) float64 {
+func (v Vertex) Abs() float64 {
 
-	return math.Sqrt(v.X*v.X + v.Y*v.Y)						return math.Sqrt(v.X*v.X + v.Y*v.Y)
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 	
-}										}
+}
 
 func main() {
 
 	v := Vertex{3, 4}
 	
-	fmt.Println(Abs(v))
+	fmt.Println (v.Abs ())
 	
 }
 
@@ -536,6 +536,27 @@ func (f MyFloat) Abs() float64 {
 	}
 	
 	return float64(f)
+	
+}
+
+### POINTER RECEIVER METHOD
+---
+POINTER RECEIVER CAN MODIFY VALUES/ATTRIBUTES OF THE TYPE
+
+IF THE TYPE IS HUGE, IT IS MORE EFFICIENT TO USE POINTER RECEIVER. WHEREAS IF THE OBJECT IS SMALL (ATTRIBUTES), IT CAN BE MORE EFFICIENT TO USE VALUE RECEIVER.
+
+type Vertex struct {
+
+	X, Y float64
+	
+}
+
+THIS METHOD IS NOT RETURNING ANYTHING SO RETURN TYPE IS EMPTY
+func (v *Vertex) Scale(f float64) {
+
+	v.X = v.X * f
+	
+	v.Y = v.Y * f
 	
 }
 

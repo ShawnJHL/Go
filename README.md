@@ -1,11 +1,12 @@
 # Go
 ***
+GO IS A STATICALL TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
+
 ### Resources
 ---
-sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX
+sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 10
 
-Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q
-
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 2
 freeCodeCamp.org - https://www.youtube.com/watch?v=YS4e4q9oBaU
 
 ### Research
@@ -15,6 +16,14 @@ INTERFACE
 STRINGER/ERROR STATE
 
 p  = &Vertex{1, 2}
+
+### QUOTES
+---
+"" REPRESENTS A COLLECTION OF CHARACTERS (STRING)
+
+'' REPRESENTS A CHARACTER
+
+USE DOUBLE QUOTES
 
 ## COMPILE/RUN
 ---
@@ -93,12 +102,6 @@ Contstant variables do not change
 
 const Pi = 3.14
 
-### QUOTES
----
-"" REPRESENTS A COLLECTION OF CHARACTERS (STRING
-
-'' REPRESENTS A CHARACTER
-
 ### Function
 ---
 MAIN FUNCTION WILL ALWAYS RUN
@@ -143,7 +146,15 @@ fmt.Printf () - TO PRINT WITH ARGUMENTS
 
 fmt.Sprint ()
 
+MULTILINE
+
+``
+
+REPRESENTATION
+
 %d = digit
+
+%s = string
 
 %b = binary
 

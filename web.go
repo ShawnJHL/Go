@@ -7,11 +7,14 @@ import (
 
 func index_handler (w http.ResponseWriter, r *http.Request) {
   // FPRINTF IS FORMAT WHAT YOU SPECIFY
-  fmt.Fprintf (w, "Whoa, Go is neat!")
+  fmt.Fprintf (w, "<h1>Whoa, Go is neat!</h1>")
+  fmt.Fprintf (w, "<p>%s and %s are nice</p>", "something", "<strong>some other thing</strong>")
+  
+  fmt.Fprintf (w, `<h1>Whoa, Go is multi!</h1>
+<p>line add</p>`
 }
 
 func about_handler (w http.ResponseWriter, r *http.Request) {
-  // FPRINTF IS FORMAT WHAT YOU SPECIFY
   fmt.Fprintf (w, "ABOUT PAGE!")
 }
 

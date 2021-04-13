@@ -4,7 +4,7 @@ GO IS A STATICALL TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
 
 ### Resources
 ---
-sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 11
+sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 13
 
 Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 2
 freeCodeCamp.org - https://www.youtube.com/watch?v=YS4e4q9oBaU
@@ -140,11 +140,11 @@ func split(sum int) (x, y int) {
 
 ### Print
 ---
-fmt.Println () - TO PRINT
+fmt.Println () - PRINT LINE
 
-fmt.Printf () - TO PRINT WITH ARGUMENTS
+fmt.Printf () - PRINT FORMAT (ARGUMENTS)
 
-fmt.Sprint ()
+fmt.Sprint () - ASSIGN VALUE TO VARIABLE
 
 MULTILINE
 
@@ -200,6 +200,18 @@ for sum < 1000 {
 
 	sum += sum
 	
+}
+
+x := 5
+
+for {
+
+	x += 3
+	
+	if x > 5 {
+	
+		break
+	}
 }
 
 RANGE TO ITERATE SLICE OR MAP (YOU CAN USE _ AS VARIABLE TO UNASSIGN)

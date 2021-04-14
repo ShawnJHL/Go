@@ -1,30 +1,62 @@
-<head>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-</head>
+package main
 
-<h1>{{.Title}}</h1>
+import (
+	"fmt"
+	"net/http"
+	"html/template"
+	"encoding/xml"
+	"io/ioutil"
+)
 
-<table id="fancytable" class="display">
-    <col width="35%">
-    <col width="65%">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Keywords</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{ range $key, $value := .News }}
-         <tr>
-            <td><a href="{{ $value.Location }}" target='_blank'>{{ $key }}</td>
-            <td>{{ $value.Keyword }}</td>
-        </tr>
-        {{ end }}
-    </tbody>
-</table>
+type NewsMap struct {
+	Keyword string
+	Location string
+}
 
-<script>$(document).ready(function() {
-    $('#fancytable').DataTable();
-} );</script>  
+type NewsAggPage struct {
+    Title string
+    News map[string]NewsMap
+}
+
+type Sitemapindex struct {
+	Locations []string `xml:"sitemap>loc"`
+}
+
+type News struct {
+	Titles []string `xml:"url>news>title"`
+	Keywords []string `xml:"url>news>keywords"`
+	Locations []string `xml:"url>loc"`
+}
+
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "<h1>Whoa, Go is neat!</h1>")
+}
+
+func newsAggHandler(w http.ResponseWriter, r *http.Request) {
+	var s Sitemapindex
+	var n News
+	resp, _ := http.Get("https://www.washingtonpost.com/news-sitemap-index.xml")
+	bytes, _ := ioutil.ReadAll(resp.Body)
+	xml.Unmarshal(bytes, &s)
+	news_map := make(map[string]NewsMap)
+
+	for _, Location := range s.Locations {
+		resp, _ := http.Get(Location)
+		bytes, _ := ioutil.ReadAll(resp.Body)
+		xml.Unmarshal(bytes, &n)
+
+		for idx, _ := range n.Keywords {
+			news_map[n.Titles[idx]] = NewsMap{n.Keywords[idx], n.Locations[idx]}
+		}
+	}
+
+	p := NewsAggPage{Title: "Amazing News Aggregator", News: news_map}
+    t, _ := template.ParseFiles("newsaggtemplate.html")
+    t.Execute(w, p)
+}
+
+func main() {
+	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/agg/", newsAggHandler)
+	http.ListenAndServe(":8000", nil) 
+}

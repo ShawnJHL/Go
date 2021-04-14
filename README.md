@@ -456,7 +456,7 @@ var s []int
 
 s = append(s, 0)
 
-### MAP
+### HASHTABLE/MAP
 
 type Vertex struct {
 
@@ -464,9 +464,9 @@ type Vertex struct {
 	
 }
 
-var m map[string]Vertex
+# YOU NEED TO USE MAKE IF YOU ARE ONLY INITAILIZING AND THEN ASSIGN KEY VALUE LATER
 
-m = make(map[string]Vertex)
+m := make(map[string]Vertex)
 
 m["Bell Labs"] = Vertex{
 
@@ -507,6 +507,11 @@ m[key] = elem / elem = m[key] / delete(m, key)
 TEST IF KEY EXIST (ok = TRUE IF EXIST OTHERWISE FALSE AND v = 0)
 
 elem, ok = m[key]
+
+ITERATE
+
+for key, value := range m:
+	fmt.Println (key, value)
 
 ### FUNCTION VS METHOD
 ---

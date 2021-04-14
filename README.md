@@ -4,7 +4,7 @@ GO IS A STATICALL TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
 
 ### Resources
 ---
-sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 13
+sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 17
 
 Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 2
 freeCodeCamp.org - https://www.youtube.com/watch?v=YS4e4q9oBaU
@@ -22,6 +22,8 @@ p  = &Vertex{1, 2}
 "" REPRESENTS A COLLECTION OF CHARACTERS (STRING)
 
 '' REPRESENTS A CHARACTER
+
+`` MULTILINE STRING
 
 USE DOUBLE QUOTES
 
@@ -464,7 +466,7 @@ type Vertex struct {
 	
 }
 
-# YOU NEED TO USE MAKE IF YOU ARE ONLY INITAILIZING AND THEN ASSIGN KEY VALUE LATER
+#YOU NEED TO USE MAKE IF YOU ARE ONLY INITAILIZING AND THEN ASSIGN KEY VALUE LATER
 
 m := make(map[string]Vertex)
 

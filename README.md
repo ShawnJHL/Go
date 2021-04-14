@@ -1,12 +1,13 @@
 # Go
 ***
-GO IS A STATICALL TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
+### TIPS
+GO IS A STATIC TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
 
 ### Resources
 ---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 17
 
-Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 2
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 3
 freeCodeCamp.org - https://www.youtube.com/watch?v=YS4e4q9oBaU
 
 ### Research
@@ -94,9 +95,22 @@ var (
 	
 )
 
+### EXPLRESSION ASSIGNMENT OPERATOR/WALRUS OPERATOR
 SHORT VARIABLE DECLARATION (MUST BE WITHIN A FUNCTION)
 
 k := 3
+
+### IMPLICIT/EXPLICIT
+
+IMPLICIT - IMPLICITLY ASK GO TO DEFINE WHAT THIS VARIABLE SHOULD BE
+
+var number = 260
+
+EXPLICIT - EXPLICITLY DEFINED THE TYPE OF VARIABLE
+
+var number uint16 = 260
+
+IT IS POSSIBLE THAT WHAT GO DIFINED IS NOT WHAT YOU NEED
 
 ### Constant
 ---

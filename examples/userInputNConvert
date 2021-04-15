@@ -1,0 +1,16 @@
+package main
+
+import (
+  "fmt"
+  "bufio"
+  "os"
+  "strconv"
+)
+
+func main () {
+  scanner := bufio.NewScanner (os.Stdin)
+  fmt.Printf ("TYPE THE YEAR YOU WERE BORN: ")
+  scanner.Scan ()
+  input := strconv.ParseInt (scanner.Text (), 10, 64)
+  fmt.Printf ("YOU WILL BE  %q YEARS OLD AT THE END OF 2020", 2020 - input)
+}

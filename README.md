@@ -7,7 +7,7 @@ GO IS A STATIC TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
 ---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 17
 
-Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 3
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 4
 freeCodeCamp.org - https://www.youtube.com/watch?v=YS4e4q9oBaU
 
 ### Research
@@ -158,27 +158,74 @@ func split(sum int) (x, y int) {
 ---
 fmt.Println () - PRINT LINE
 
-fmt.Printf () - PRINT FORMAT (ARGUMENTS)
+fmt.Sprint () - STORE FORMATTED STRING TO VARIABLE
 
-fmt.Sprint () - ASSIGN VALUE TO VARIABLE
+fmt.Printf () - PRINT FORMATTED STRING
 
-MULTILINE
+### FORMATTING
+GENERAL
 
-``
+%v - VALUE
 
-REPRESENTATION
+%T - TYPE
 
-%d = digit
+%% - PERCENT SIGN
 
-%s = string
+BOOLEAN
 
-%b = binary
+%t - BOOLEARN
 
-%t = boolean
+INTEGER
 
-%v = value
+%b - BASE 2 (BINARY REPRESENTATION)
 
-%T = type
+%o - BASE 8 (OCTAL DECIMAL)
+
+%d - BASE 10 (DECIMAL)
+
+%x - BASE 16 LOWER (HEXADECIMAL)
+
+%X - BASE 16 UPPER (HEXADECIMAL)
+
+FLOATING POINTS
+
+%e - SCIENTIFIC NOTATION OF e
+
+%f / %F - DECIMAL TO EXPONENT
+
+%g - LARGET DECIMAL TO EXPONENT
+
+STRINGS
+
+%s - STRING
+
+%q - QUOTED STRING
+
+WIDTH & PRECISION
+
+%f - DEFAULT WIDTH (PADDING LEFT, USE - FOR RIGHT), DEFAULT PRECISION (FLOATING POINTS)
+
+%9f - WIDTH 9, DEFAULT PRECISION
+
+%.2f - DEFAULT WIDTH, PRECISION 2
+
+%9.2f - WIDTH 9, PRECISION 2
+
+%9.F - WIDTH 9, PRECISION 0
+
+PADDING
+
+%09D - PAD DIGITS TO LENGTH 9 WITH PRECEEDING 0'S
+
+%-4D - PAD WITH SPACES (WIDTH 4, LEFT JUSTIFIED)
+
+NEW LINE
+
+\n
+
+TAB
+
+\t
 
 ### Types
 ---

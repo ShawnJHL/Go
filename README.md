@@ -370,7 +370,7 @@ fmt.Println(i)  // see the new value of i
 
 ### Defer
 ---
-A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE AND STACKS
+A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE/PANIC AND STACKS
 
 fmt.Println("counting")
 
@@ -709,6 +709,34 @@ func main() {
 		
 	}
 	
+}
+
+### CONCURRENCY
+CONCURRENCY IS LIKE DEALING WITH MULTIPLE THINGS AT ANY ONE TIME
+
+func say (s string) {
+
+  for i:= 0; i < 3; i++ {
+  
+    fmt.Println (s)
+    
+    time.Sleep (time.Millisecond * 100)
+    
+  }
+  
+  wg.Done ()
+}
+
+#YOU NEED TO ADD "GO"
+
+func main () {
+
+  go say ("HEY")
+  
+  go say ("THERE")
+  
+  time.Sleep (time.Second)
+  
 }
 
 ### Interface

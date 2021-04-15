@@ -7,7 +7,7 @@ GO IS A STATIC TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
 ---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 17
 
-Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 4
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 5
 
 ### Research
 ---
@@ -159,7 +159,7 @@ fmt.Println () - PRINT LINE
 
 fmt.Sprint () - STORE FORMATTED STRING TO VARIABLE
 
-fmt.Printf () - PRINT FORMATTED STRING
+fmt.Printf () - PRINT FORMATTED STRING OR WITHOUT NEWLINE
 
 ### FORMATTING
 GENERAL
@@ -180,7 +180,7 @@ INTEGER
 
 %o - BASE 8 (OCTAL DECIMAL)
 
-%d - BASE 10 (DECIMAL)
+%d - BASE 10 (BASE, DECIMAL)
 
 %x - BASE 16 LOWER (HEXADECIMAL)
 

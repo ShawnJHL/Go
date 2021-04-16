@@ -711,32 +711,132 @@ func main() {
 	
 }
 
-### CONCURRENCY
-CONCURRENCY IS LIKE DEALING WITH MULTIPLE THINGS AT ANY ONE TIME
+### CONCURRENCY / GOR OUTINES
+---
+CONCURRENCY (go) IS LIKE DEALING WITH MULTIPLE THINGS (THREADS) AT ANY ONE TIME
+
+func say(s string) {
+
+	for i:=0; i < 3; i++ {
+	
+		time.Sleep(100*time.Millisecond)
+		
+		fmt.Println(s)
+		
+	}	
+	
+}
+
+func main() {
+
+	go say("Hey")
+	
+	say("there")
+	
+}
+
+### SYNCRONIZATION
+---
+
+SYNCRONIZATION IS USED TO MARK EACH THREAD AS START AND COMPLETE SO OS CAN WAIT FOR THEM TO FINISH
+
+var wg sync.WaitGroup
+
+func cleanup () {
+
+  if r := recover (); r != nil {
+  
+    fmt.Println ("RECOVERED IN CLEANUP", r)
+    
+  }
+  
+}
 
 func say (s string) {
 
+MARK DONE
+  defer wg.Done ()
+
+CHECK FOR PANIC AND RECOVER FROM IT
+  defer cleanup ()
+  
   for i:= 0; i < 3; i++ {
   
     fmt.Println (s)
     
     time.Sleep (time.Millisecond * 100)
     
+    if i == 2 {
+    
+      panic ("OH DEAR 2")
+      
+    }
+    
   }
   
-  wg.Done ()
 }
-
-#YOU NEED TO ADD "GO"
 
 func main () {
 
+MARK START
+  wg.Add (1)
+  
   go say ("HEY")
+  
+MARK START
+  wg.Add (1)
   
   go say ("THERE")
   
-  time.Sleep (time.Second)
+WAIT FOR ALL THREADS TO BE COMPLETED
+  wg.Wait ()
   
+  go say ("HI")
+  
+  wg.Wait ()
+  
+}
+
+### CHANNEL
+---
+CHANNEL <- IN GO IS TO USE THEM WITH GO ROUTINES TO SEND AND RECEIVE VALUES BETWEEN THEM
+
+SEND AND RECEIVE PART OF CHANNEL IS GOING TO BLOCK (WITHOUTIT PROGRAM CAN FINISH BEFORE THE CONCURRENCY IS DONE) GO ROUTINES SO YOU DON'T HAVE TO WAIT FOR THEM
+
+var wg sync.WaitGroup
+
+func foo(c chan int, someValue int) {
+
+    defer wg.Done()
+    
+    c <- someValue * 5
+    
+}
+
+func main() {
+
+    # TYPE, BUFFER SIZE
+    
+    fooVal := make(chan int, 10)
+    
+    for i := 0; i < 10; i++ {
+    
+        wg.Add(1)
+	
+        go foo(fooVal, i)
+	
+    }
+    
+    wg.Wait()
+    
+    close(fooVal)
+    
+    for item := range fooVal {
+    
+        fmt.Println(item)
+	
+    }
+    
 }
 
 ### Interface

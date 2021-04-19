@@ -7,7 +7,7 @@ GO IS A STATIC TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
 ---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 17
 
-Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 5
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 9
 
 ### Research
 ---
@@ -111,47 +111,29 @@ var number uint16 = 260
 
 IT IS POSSIBLE THAT WHAT GO DIFINED IS NOT WHAT YOU NEED
 
+### Types
+---
+bool
+
+string
+
+int  int8  int16  int32  int64
+
+uint uint8 uint16 uint32 uint64 uintptr
+
+byte // alias for uint8
+
+rune // alias for int32, represents a Unicode code point
+
+float32 float64
+
+complex64 complex128
+
 ### Constant
 ---
 Contstant variables do not change
 
 const Pi = 3.14
-
-### Function
----
-MAIN FUNCTION WILL ALWAYS RUN
-
-func main () {
-
-	fmt.Println ("HELLO WORLD")
-	
-}
-
-SINGLE INTEGER RETURN
-
-func add (x, y int) int {
-	return x + y, x
-}
-
-MULTIPULE RETURN
-
-func add (x int, y int) (int, int) {
-
-	return x + y, x
-	
-}
-
-
-NAMED RETURN
-
-func split(sum int) (x, y int) {
-
-	x = sum * 4 / 9
-	
-	y = sum - x
-	
-	return
-}
 
 ### Print
 ---
@@ -226,67 +208,17 @@ TAB
 
 \t
 
-### Types
+### CONDITION & BOOLEAN EXPRESSION
 ---
-bool
-
-string
-
-int  int8  int16  int32  int64
-
-uint uint8 uint16 uint32 uint64 uintptr
-
-byte // alias for uint8
-
-rune // alias for int32, represents a Unicode code point
-
-float32 float64
-
-complex64 complex128
-
-### For loop / While loop
----
-INIT; CONDITION; POST
-
-for i := 0; i < 10; i++ {
-
-	fmt.Println (i)
-	
-}
-
-INIT, CONDITION, POST ARE OPTIONAL (INIFINITE LOOP)
-
-sum := 1
-
-for sum < 1000 {
-
-	sum += sum
-	
-}
+COMPARING VARIABLES MUST BE SAME TYPE
 
 x := 5
 
-for {
+y := 5.5
 
-	x += 3
-	
-	if x > 5 {
-	
-		break
-	}
-}
+z = x == int (y)
 
-RANGE TO ITERATE SLICE OR MAP (YOU CAN USE _ AS VARIABLE TO UNASSIGN)
-
-var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
-
-for i, v := range pow {
-
-	fmt.Printf("2**%d = %d\n", i, v)
-	
-}
-
-### If
+### CONDITIONAL STATEMENT (IF)
 ---
 v = 5
 
@@ -298,11 +230,9 @@ IF CAN START WITH VARIABLE DECLARATION AND THIS VARIABLE IS ALSO AVAILABLE IN EL
 
 if v := 5; v < 10 {
 
-}
+} elses if v == 10 {
 
-else {
-
-	v += 5
+} else {
 	
 }
 
@@ -352,6 +282,84 @@ default:
 	
 	fmt.Printf("%s.\n", os)
 	
+}
+
+### For loop / While loop
+---
+INIT; CONDITION; POST
+
+for i := 0; i < 10; i++ {
+
+	fmt.Println (i)
+	
+}
+
+INIT, CONDITION, POST ARE OPTIONAL (INIFINITE LOOP)
+
+sum := 1
+
+for sum < 1000 {
+
+	sum += sum
+	
+}
+
+x := 5
+
+for {
+
+	x += 3
+	
+	if x > 5 {
+	
+		break
+	}
+}
+
+RANGE TO ITERATE SLICE OR MAP (YOU CAN USE _ AS VARIABLE TO UNASSIGN)
+
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+for i, v := range pow {
+
+	fmt.Printf("2**%d = %d\n", i, v)
+	
+}
+
+### Function
+---
+MAIN FUNCTION WILL ALWAYS RUN
+
+func main () {
+
+	fmt.Println ("HELLO WORLD")
+	
+}
+
+SINGLE INTEGER RETURN
+
+func add (x, y int) int {
+	return x + y, x
+}
+
+MULTIPULE RETURN
+
+func add (x int, y int) (int, int) {
+
+	return x + y, x
+	
+}
+
+
+NAMED RETURN
+
+func split(sum int) (x, y int) {
+
+	x = sum * 4 / 9
+	
+	y = sum - x
+	
+	return
 }
 
 ### Pointer
@@ -815,7 +823,7 @@ func foo(c chan int, someValue int) {
 
 func main() {
 
-    # TYPE, BUFFER SIZE
+    TYPE, BUFFER SIZE
     
     fooVal := make(chan int, 10)
     

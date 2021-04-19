@@ -1,31 +1,21 @@
 # Go
 ***
 ### TIPS
-GO IS A STATIC TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE
+GO IS A STATIC TYPED LANGUAGE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)
 
 ### Resources
 ---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 17
 
-Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 9
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 16
 
-### Research
+### RESEARCH
 ---
 INTERFACE
 
 STRINGER/ERROR STATE
 
 p  = &Vertex{1, 2}
-
-### QUOTES
----
-"" REPRESENTS A COLLECTION OF CHARACTERS (STRING)
-
-'' REPRESENTS A CHARACTER
-
-`` MULTILINE STRING
-
-USE DOUBLE QUOTES
 
 ## COMPILE/RUN
 ---
@@ -37,17 +27,17 @@ TO JUST COMPILE. THE COMPILED FILE CAN BE RUN ON ANY OS.
 
 go build script.go
 
-### Package
+### PACKAGE
 ---
-Every go program is made up of packages.
+EVERY GO PROGRAM IS MADE UP OF PACKAGES
 
-Programs start running in package main.
+PROGRAMS START RUNNING IN PACKAGE MAIN
 
-### Import
+### IMPORT
 ---
 import "fmt"
 
-import "math"
+-OR-
 
 import (
 
@@ -61,22 +51,31 @@ TO IMPORT SUBPACKAGES
 
 import "math/rand"
 
-TO USE rand.Intn(100)
+TO USE
 
-### Exported Names
+rand.Intn(100)
+
+### MAIN FUNCTION
+---
+MAIN FUNCTION WILL ALWAYS RUN
+
+func main() {
+}
+
+### EXPORTED NAME
 ---
 A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME.
 
-ALL THE FUNCTIONS YOU ARE USING FROM A PACKAGE START WITH CAPITAL LETTERS.
+ALL THE FUNCTIONS FROM A PACKAGE START WITH CAPITAL LETTERS.
 
-math.Pi, fmt.Println ()
+math.Pi, fmt.Println (), ETC
 
 ### COMMENTS
 ---
 // FOR SINGLE LINE
 /* */ FOR MULTIPLE LINES
 
-### Variable
+### VARIABLE
 ---
 VARIABLES WITHOUT INITALIZERS
 
@@ -95,6 +94,7 @@ var (
 )
 
 ### EXPLRESSION ASSIGNMENT OPERATOR/WALRUS OPERATOR
+---
 SHORT VARIABLE DECLARATION (MUST BE WITHIN A FUNCTION)
 
 k := 3
@@ -111,7 +111,7 @@ var number uint16 = 260
 
 IT IS POSSIBLE THAT WHAT GO DIFINED IS NOT WHAT YOU NEED
 
-### Types
+### TYPE
 ---
 bool
 
@@ -129,13 +129,21 @@ float32 float64
 
 complex64 complex128
 
-### Constant
+### CONSTANT
 ---
-Contstant variables do not change
+CONSTANT VARIABLES DO NOT CHANGE
 
 const Pi = 3.14
 
-### Print
+### QUOTES
+---
+"" REPRESENTS A STRING (USER DOUBLE QUOTES)
+
+'' REPRESENTS A CHARACTER
+
+\`\` MULTILINE STRING
+
+### PRINT
 ---
 fmt.Println () - PRINT LINE
 
@@ -144,6 +152,7 @@ fmt.Sprint () - STORE FORMATTED STRING TO VARIABLE
 fmt.Printf () - PRINT FORMATTED STRING OR WITHOUT NEWLINE
 
 ### FORMATTING
+---
 GENERAL
 
 %v - VALUE
@@ -210,7 +219,7 @@ TAB
 
 ### CONDITION & BOOLEAN EXPRESSION
 ---
-COMPARING VARIABLES MUST BE SAME TYPE
+COMPARING VARIABLES MUST BE THE SAME TYPE
 
 x := 5
 
@@ -226,7 +235,7 @@ if v < 10 {
 
 }
 
-IF CAN START WITH VARIABLE DECLARATION AND THIS VARIABLE IS ALSO AVAILABLE IN ELSE BLOCKS
+IF CAN START WITH A DECLARATION AND THIS VARIABLE IS ALSO AVAILABLE IN ELSE BLOCKS
 
 if v := 5; v < 10 {
 
@@ -236,13 +245,13 @@ if v := 5; v < 10 {
 	
 }
 
-### Switch
+### SWITCH
 ---
 SWITCH RUNS THE FIRST CAST THAT SATISFIES CONDITION
 
 switch os := runtime.GOOS; os {
 
-case "darwin":
+case "darwin", "another match":
 
 	fmt.Println("OS X.")
 	
@@ -284,7 +293,7 @@ default:
 	
 }
 
-### For loop / While loop
+### FOR LOOP / WHILE LOOP
 ---
 INIT; CONDITION; POST
 
@@ -316,7 +325,10 @@ for {
 	}
 }
 
-RANGE TO ITERATE SLICE OR MAP (YOU CAN USE _ AS VARIABLE TO UNASSIGN)
+### RANGE
+---
+
+ITERATE ARRAY, SLICE, AND MAP (YOU CAN USE _ AS VARIABLE TO UNASSIGN)
 
 var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
 
@@ -326,110 +338,41 @@ for i, v := range pow {
 	
 }
 
-### Function
+### ARRAY
 ---
-MAIN FUNCTION WILL ALWAYS RUN
+ARRAY CANNOT BE RESIZED
 
-func main () {
-
-	fmt.Println ("HELLO WORLD")
-	
-}
-
-SINGLE INTEGER RETURN
-
-func add (x, y int) int {
-	return x + y, x
-}
-
-MULTIPULE RETURN
-
-func add (x int, y int) (int, int) {
-
-	return x + y, x
-	
-}
-
-
-NAMED RETURN
-
-func split(sum int) (x, y int) {
-
-	x = sum * 4 / 9
-	
-	y = sum - x
-	
-	return
-}
-
-### Pointer
----
-i, j := 42, 2701
-
-& IS POINT TO MEMORY ADDRESS. * IS READ THROUGH MEMORY ADDRESS
-
-p := &i         // point to i
-
-fmt.Println(*p) // read i through the pointer
-
-*p = 21         // set i through the pointer
-
-fmt.Println(i)  // see the new value of i
-
-### Defer
----
-A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE/PANIC AND STACKS
-
-fmt.Println("counting")
-
-for i := 0; i < 10; i++ {
-
-	defer fmt.Println(i)
-	
-}
-
-fmt.Println("done")
-
-### Struct
----
-type Vertex struct {
-
-	X int
-	
-	Y int
-	
-}
-
-func main() {
-
-	v := Vertex {1, 2}
-	v := Vertex {X:1, Y: 2}
-	
-	v.X = 4
-	
-	fmt.Println(v.X)
-}
-
-### Array
----
-ARRAYS CANNOT BE RESIZED
+ARRAY/SLICE CAN ONLY STORE ONE TYPE OF DATA (STRING, INT, ETC)
 
 var a [2]string
 
 a[0] = "Hello"
 
 a[1] = "World"
+
+-OR-
 	
 primes := [6]int{2, 3, 5, 7, 11, 13}
 
+-OR-
+
+MULTIDIMENTIONAL ARRAY
+
+arr2D := [2][2]int{{1,2},{3,4}}
+
 ### Slice
 ---
-SLICE IS DYNAMICALLY SIZED
-STARTING INDEX WILL COMPLETELY DROP PREVIOUS ELEMENTS
+SLICE CAN BE DYNAMICALLY SIZED
+
+ARRAY/SLICE CAN ONLY STORE ONE TYPE OF DATA (STRING, INT, ETC)
 
 q := []int{2, 3, 5, 7, 11, 13}
 
+-OR-
+
 r := []bool{true, false, true, true, false, true}
+
+-OR-
 
 s := []struct {
 
@@ -454,59 +397,25 @@ names := [2]string{
 	
 }
 
-b := names[1:3]
+SLICE OPERATOR :, IF START INDEX IS NOT SET DEFAULT IS 0 IF END INDEX IS NOT SET ITS SIZE OF THE ARRAY
 
-b[0] = "XXX"
+b := names[:]
 
-SLICE HAS LENGTH AND CAPACITY
+b[0] = "XXX" (JOHN BECOMES XXX)
+
+STARTING INDEX OF SLICE WILL COMPLETELY DROP PREVIOUS ELEMENTS (START INDEX IS NOT ADJUSTABLE AND BECOMES BASE WHEREAS END INDEX IS ADJUSTABLE)
 
 s := []int{2, 3, 5, 7, 11, 13}
 
-printSlice(s)
+s = s[:0] (LENGTH 0, CAPACITY (6)
 
-// Slice the slice to give it zero length.
+s = s[:4] (LENGTH 4, CAPACITY 6)
 
-s = s[:0]
+s = s[2:] (LENGTH 2, CAPACITY 4, DROPS THE FIRST TWO ELEMENTS)
 
-printSlice(s)
+s = s[0:4] (LENGTH 4, CAPACITY 4)
 
-// Extend its length.
-
-s = s[:4]
-
-printSlice(s)
-
-// Drop its first two values.
-
-s = s[2:]
-
-printSlice(s)
-
-s = s[0:4]
-
-printSlice(s)
-
-func printSlice(s []int) {
-
-	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
-	
-}
-
-ZERO VALUE OF SLICE IS NIL
-
-var s []int
-
-if s == nil {
-
-	fmt.Println("nil!")
-	
-}
-
-MAKE CAN BE USED TO SET LENGTH AND CAPACITY
-
-b := make([]int, 0, 5) // len(b)=0, cap(b)=5
-
-SLICE CAN HAVE SLICE
+MULTIDIMENTIONAL SLICE
 
 board := [][]string{
 
@@ -520,21 +429,27 @@ board := [][]string{
 
 board[0][0] = "X"
 
-APPEND
+MAKE CAN BE USED TO SET LENGTH AND CAPACITY
 
-var s []int
+b := make([]int, 0, 5) (LENGTH 0, CAPACITY 5)
 
-s = append(s, 0)
+### ARRAY/SLICE FUNCTION
+---
+len (array) - LENGTH
+
+cap (array) - CAPACITY
+
+append (array, element) - APPEND
 
 ### HASHTABLE/MAP
-
+---
 type Vertex struct {
 
 	Lat, Long float64
 	
 }
 
-#YOU NEED TO USE MAKE IF YOU ARE ONLY INITAILIZING AND THEN ASSIGN KEY VALUE LATER
+YOU NEED TO USE MAKE IF YOU ARE ONLY INITAILIZING AND THEN ASSIGN KEY VALUE LATER
 
 m := make(map[string]Vertex)
 
@@ -544,7 +459,7 @@ m["Bell Labs"] = Vertex{
 
 }
 
-OR
+-OR-
 
 var m = map[string]Vertex{
 
@@ -560,7 +475,7 @@ var m = map[string]Vertex{
 	},
 }
 
-OR
+-OR-
 
 var m = map[string]Vertex{
 
@@ -570,18 +485,92 @@ var m = map[string]Vertex{
 	
 }
 
-INSERT/RETRIEVE/DELETE
+### MAP/HASHTABLE FUNCTION
+---
+map[key] = value - INSERT/UPDATE
 
-m[key] = elem / elem = m[key] / delete(m, key)
+map[key] - RETRIEVE
 
-TEST IF KEY EXIST (ok = TRUE IF EXIST OTHERWISE FALSE AND v = 0)
+delete (map, key) - DELETE
 
-elem, ok = m[key]
+value, ok = m[key] - CHECK IF A KEY EXISTS (ok = TRUE IF EXIST OTHERWISE FALSE, VALUE WILL BE DEFAULT TO 0 IF NOT EXIST)
 
-ITERATE
+len (map) - SIZE OF MAP
 
-for key, value := range m:
-	fmt.Println (key, value)
+### FUNCTION
+---
+SINGLE RETURN
+
+func add (x int, y int) int {
+	return x + y, x
+}
+
+MULTIPULE RETURNS
+
+func add (x, y int) (int, int) {
+
+	return x + y, x
+	
+}
+
+NAMED RETURN
+
+func split(sum int) (x, y int) {
+
+	x = sum * 4 / 9
+	
+	y = sum - x
+	
+	return
+}
+
+### DEFER
+---
+A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE/PANIC AND STACKS
+
+fmt.Println("counting")
+
+for i := 0; i < 10; i++ {
+
+	defer fmt.Println(i)
+	
+}
+
+fmt.Println("done")
+
+### Pointer
+---
+i, j := 42, 2701
+
+& IS POINT TO MEMORY ADDRESS. * IS READ THROUGH MEMORY ADDRESS
+
+p := &i         // point to i
+
+fmt.Println(*p) // read i through the pointer
+
+*p = 21         // set i through the pointer
+
+fmt.Println(i)  // see the new value of i
+
+### Struct
+---
+type Vertex struct {
+
+	X int
+	
+	Y int
+	
+}
+
+func main() {
+
+	v := Vertex {1, 2}
+	v := Vertex {X:1, Y: 2}
+	
+	v.X = 4
+	
+	fmt.Println(v.X)
+}
 
 ### FUNCTION VS METHOD
 ---

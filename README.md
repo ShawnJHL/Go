@@ -15,8 +15,6 @@ INTERFACE
 
 STRINGER/ERROR STATE
 
-p  = &Vertex{1, 2}
-
 ## COMPILE/RUN
 ---
 TO COMILE AND RUN
@@ -657,14 +655,10 @@ func changeValue (str *string) {
 	
 }
 
-### FUNCTION VS METHOD
+### STRUCT (CUSTOM STRUCTURE)
 ---
-FUNCTION CAN BE USED ANYWHERE WHEREAS METHODS ARE ASSOCIATED WITH TYPE
+STRUCT IS A TYPE SO ALWAYS START WITH A CAPITAL LETTER
 
-A FUNCTION IS A TYPE IN GO
-
-### Struct
----
 type Vertex struct {
 
 	X int
@@ -679,12 +673,66 @@ func main() {
 	
 	-OR-
 	
-	v := Vertex {X:1, Y: 2}
+	v := Vertex {X:1}
+	
+	-OR-
+	
+	v Vertex = Vertex {1, 2}
 	
 	v.X = 4
-	
-	fmt.Println(v.X)
 }
+
+TO PASS A STRUC TYPE AS POINTER/REFERENCE (SO YOU CAN CHANGE VALUES OF STRUCT)
+
+YOU DO NOT HAVE TO USE * (DEREFERENCE) ON STRUCT TYPE
+
+func changeX (pt *Vertex) {
+
+	pt.X = 0
+	
+}
+
+v := &Vertex {100, 100}
+
+changeX (v)
+
+### EMBEDDED STRUCT
+---
+
+STRUCT IN ANOTHER STRUCT
+
+type Circle struct {
+
+	radius float64
+	
+	center *Point
+	
+}
+
+c1 := Circle {1.11, &Point (1, 1)
+
+c1.center.x = 5
+
+-OR-
+
+NAMING A STRUCT IS NOT NECESSARY AS LONG AS THERE ARE NO DUPLICATE ATTRIBUTE NAMES
+
+type Circle struct {
+	radisu float64
+	*Point
+}
+
+c1 := Circle {1.11, &Point (1, 1)
+
+c1.x = 5
+
+PASSING A STRUCT AS POINTER IS NOT A MUST
+
+### FUNCTION VS METHOD
+---
+FUNCTION CAN BE USED ANYWHERE WHEREAS METHODS ARE ASSOCIATED WITH TYPE (class)
+
+A FUNCTION IS A TYPE IN GO
 
 ### VALUE RECEIVE METHOD
 ---

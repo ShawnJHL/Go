@@ -129,6 +129,8 @@ float32 float64
 
 complex64 complex128
 
+func
+
 ### CONSTANT
 ---
 CONSTANT VARIABLES DO NOT CHANGE
@@ -578,13 +580,81 @@ FUNCTION CAN BE USED ANYWHERE WHEREAS METHODS ARE ASSOCIATED WITH TYPE
 
 IT IS POSSIBLE TO USE FUNCTION TO RECEIVE/MODIFY BY TAKING TYPE AS INPUT
 
+A FUNCTION IS A TYPE IN GO
+
+### FUNCTION
+---
+ASSIGNS A FUNCTION TO A VARIABLE LIKE OTHER TYPES
+
+func testF () {
+
+}
+
+test := testF ()
+
+EXCUTE THE FUNCTION RIGHT AWAY AND ASSIGN THE RETURN TO A VARIABLE
+
+MUST DEFINE INPUT AND OUTPUT FOR FUNCTION (IF THERE IS ONE)
+
+testF := func (x int) int {
+
+	return 5
+	
+} (5)
+
+PASS A FUNCTION TO ANOTHER FUNCTION
+
+func testF2 (myFunc func(int) int) int {
+
+	return myFunc (5) + 1
+	
+}
+
+### FUNCTION CLOSURE
+---
+A NESTED FUNCTION THAT REFERENCES VARIABLES FROM OUTSIDE AND IS BEING RETURNED (EX. sum)
+
+WITHOUT CLOSURE, SAMETHING CAN BE DONE BY DEFINING sum AS A GLOBAL VARIABLE
+
+func adder() func(int) int {
+
+	sum := 0
+	
+	return func(x int) int {
+	
+		sum += x
+		
+		return sum
+		
+	}
+	
+}
+
+func main() {
+
+	pos, neg := adder(), adder()
+	
+	for i := 0; i < 10; i++ {
+	
+		fmt.Println(
+		
+			pos(i),
+			
+			neg(-2*i),
+			
+		)
+		
+	}
+	
+}
+
+sum WITHIN adder FUNCTION CONTINUTES TO BUILD UP WITHIN THE RETURNED FUNCTION
+
 ### VALUE RECEIVE METHOD
 ---
 VALUE RECEIVER ONLY RECEIVES VALUES AND THAT'S ALL THEY CAN DO. THEY CANNOT CHANGE VALUES OF THE TYPE
 
-VALUCE RECEIVER CAN CHANGE VALUES BUT IT WILL ONLY BE WITHIN SCOPE
-
-VALUE RECEIVER WORKS LIKE MAKING A COPY OF THE OBJECT.
+VALUCE RECEIVER CAN CHANGE VALUES BUT IT WILL ONLY BE WITHIN SCOPE LIKE MAKING ITS OWN COPY
 
 IF THE TYPE IS HUGE, IT IS MORE EFFICIENT TO USE POINTER RECEIVER. WHEREAS IF THE OBJECT IS SMALL (ATTRIBUTES), IT CAN BE MORE EFFICIENT TO USE VALUE RECEIVER. 
 
@@ -594,7 +664,7 @@ type Vertex struct {
 	
 }
 
-v = OBJECT VARIABLE Vertex = TYPE METHOD NAME
+v = OBJECT VARIABLE
 
 func (v Vertex) Abs() float64 {
 
@@ -672,43 +742,7 @@ func main() {
 	fmt.Println(compute(math.Pow))
 }
 
-### FUNCTION CLOSURE
----
-A CLOSURE IS A FUNCTION VALUE THAT REFERENCES VARIABLE FROM OUTSIDE ITS BODY
-
-func adder() func(int) int {
-
-	sum := 0
-	
-	return func(x int) int {
-	
-		sum += x
-		
-		return sum
-		
-	}
-	
-}
-
-func main() {
-
-	pos, neg := adder(), adder()
-	
-	for i := 0; i < 10; i++ {
-	
-		fmt.Println(
-		
-			pos(i),
-			
-			neg(-2*i),
-			
-		)
-		
-	}
-	
-}
-
-### CONCURRENCY / GOR OUTINES
+### CONCURRENCY / GO ROUTINES
 ---
 CONCURRENCY (go) IS LIKE DEALING WITH MULTIPLE THINGS (THREADS) AT ANY ONE TIME
 

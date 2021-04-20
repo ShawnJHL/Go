@@ -513,65 +513,10 @@ for i := 0; i < 10; i++ {
 
 fmt.Println("done")
 
-### MUTTABLE & IMMUTABLE
----
-MUTABLE - CANNOT CHANGE (COPIES THE CONTENT IN RAM)
-
-	VARIABLE
-	
-	ARRAY (FIXED SIZE)
-
-IMMUTABLE - CAN CHANGE (COPIES THE POINTER IN RAM)
-
-	SLICE
-	
-	MAP
-
-### Pointer
----
-i, j := 42, 2701
-
-& IS POINT TO MEMORY ADDRESS. * IS READ THROUGH MEMORY ADDRESS
-
-p := &i         // point to i
-
-fmt.Println(*p) // read i through the pointer
-
-*p = 21         // set i through the pointer
-
-fmt.Println(i)  // see the new value of i
-
-### Struct
----
-type Vertex struct {
-
-	X int
-	
-	Y int
-	
-}
-
-func main() {
-
-	v := Vertex {1, 2}
-	
-	-OR-
-	
-	v := Vertex {X:1, Y: 2}
-	
-	v.X = 4
-	
-	fmt.Println(v.X)
-}
-
-### FUNCTION VS METHOD
----
-FUNCTION CAN BE USED ANYWHERE WHEREAS METHODS ARE ASSOCIATED WITH TYPE
-
-A FUNCTION IS A TYPE IN GO
-
 ### FUNCTION
 ---
+WHEN A FUNCTION IS DEFINED, INPUT AND OUTPUT FOR FUNCTION MUST BE DEFINED ALSO (IF THERE IS ONE)
+
 SINGLE RETURN
 
 func add (x int, y int) int {
@@ -599,7 +544,8 @@ func split(sum int) (x, y int) {
 	return
 }
 
-
+### FUNCTION AS A TYPE/VALUE
+---
 FUNCTION CAN BE ASSIGNED TO A VARIABLE LIKE OTHER TYPES
 
 func testF () {
@@ -608,9 +554,12 @@ func testF () {
 
 test := testF ()
 
-EXCUTE THE FUNCTION RIGHT AWAY AND ASSIGN THE RETURN TO A VARIABLE
+-OR-
 
-MUST DEFINE INPUT AND OUTPUT FOR FUNCTION (IF THERE IS ONE)
+test := func testF(){
+}
+
+EXCUTE THE FUNCTION RIGHT AWAY AND ASSIGN THE RETURN TO A VARIABLE
 
 testF := func (x int) int {
 
@@ -622,7 +571,7 @@ testF := func (x int) int {
 ---
 A NESTED FUNCTION THAT REFERENCES VARIABLES FROM OUTSIDE AND IS BEING RETURNED (EX. sum)
 
-A FUNCTION CLOSURE IS USED WHEN
+A FUNCTION CLOSURE IS USED WHEN:
 
 A STATE/ENVIRONMENT MUST BE REMEMBERED (EX. sum)
 
@@ -663,6 +612,79 @@ func main() {
 }
 
 POSSIBLE TO RETURN MAP OF FUNCTIONS
+
+### MUTTABLE & IMMUTABLE
+---
+MUTABLE - CANNOT CHANGE (COPIES THE CONTENT IN RAM)
+
+	VARIABLE
+	
+	ARRAY (FIXED SIZE)
+
+IMMUTABLE - CAN CHANGE (COPIES THE POINTER IN RAM)
+
+	SLICE
+	
+	MAP
+
+### POINTER/REFERENCE & DEREFERENCE
+---
+& - POINT TO MEMORY ADDRESS/REFERENCE/POINTER
+
+* - READ THROUGH MEMORY ADDRESS/DEREFERENCE
+
+i, j := 42, 2701
+
+p := &i
+
+*p = 21
+
+-OR-
+
+toChange := "hello"
+
+var pointer *string = &toChange
+
+*DATA TYPE - POINTER TO THAT DATA TYPE
+
+*VARIABLE NAME - GET THE VALUE OF THE VARIABLE
+
+FUNCTION CAN ALSO RECEIVE POINTER(s) AS INPUT AND DEREFERENCE (SO THE VARIABLE CAN BE CHANGED WITHIN THE FUNCTION)
+
+func changeValue (str *string) {
+
+	*str = "NEW STRING"
+	
+}
+
+### FUNCTION VS METHOD
+---
+FUNCTION CAN BE USED ANYWHERE WHEREAS METHODS ARE ASSOCIATED WITH TYPE
+
+A FUNCTION IS A TYPE IN GO
+
+### Struct
+---
+type Vertex struct {
+
+	X int
+	
+	Y int
+	
+}
+
+func main() {
+
+	v := Vertex {1, 2}
+	
+	-OR-
+	
+	v := Vertex {X:1, Y: 2}
+	
+	v.X = 4
+	
+	fmt.Println(v.X)
+}
 
 ### VALUE RECEIVE METHOD
 ---
@@ -729,31 +751,6 @@ func (v *Vertex) Scale(f float64) {
 	
 	v.Y = v.Y * f
 	
-}
-
-### FUNCTION AS VALUE
----
-FUNCTIONS CAN BE PASSED AROUND LIKE VALUES
-
-func compute(fn func(float64, float64) float64) float64 {
-
-	return fn(3, 4)
-	
-}
-
-func main() {
-
-	hypot := func(x, y float64) float64 {
-	
-		return math.Sqrt(x*x + y*y)
-		
-	}
-	
-	fmt.Println(hypot(5, 12))
-
-	fmt.Println(compute(hypot))
-	
-	fmt.Println(compute(math.Pow))
 }
 
 ### CONCURRENCY / GO ROUTINES

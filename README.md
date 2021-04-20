@@ -499,33 +499,6 @@ value, ok = m[key] - CHECK IF A KEY EXISTS (ok = TRUE IF EXIST OTHERWISE FALSE, 
 
 len (map) - SIZE OF MAP
 
-### FUNCTION
----
-SINGLE RETURN
-
-func add (x int, y int) int {
-	return x + y, x
-}
-
-MULTIPULE RETURNS
-
-func add (x, y int) (int, int) {
-
-	return x + y, x
-	
-}
-
-NAMED RETURN
-
-func split(sum int) (x, y int) {
-
-	x = sum * 4 / 9
-	
-	y = sum - x
-	
-	return
-}
-
 ### DEFER
 ---
 A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE/PANIC AND STACKS
@@ -539,6 +512,20 @@ for i := 0; i < 10; i++ {
 }
 
 fmt.Println("done")
+
+### MUTTABLE & IMMUTABLE
+---
+MUTABLE - CANNOT CHANGE (COPIES THE CONTENT IN RAM)
+
+	VARIABLE
+	
+	ARRAY (FIXED SIZE)
+
+IMMUTABLE - CAN CHANGE (COPIES THE POINTER IN RAM)
+
+	SLICE
+	
+	MAP
 
 ### Pointer
 ---
@@ -567,6 +554,9 @@ type Vertex struct {
 func main() {
 
 	v := Vertex {1, 2}
+	
+	-OR-
+	
 	v := Vertex {X:1, Y: 2}
 	
 	v.X = 4
@@ -578,13 +568,39 @@ func main() {
 ---
 FUNCTION CAN BE USED ANYWHERE WHEREAS METHODS ARE ASSOCIATED WITH TYPE
 
-IT IS POSSIBLE TO USE FUNCTION TO RECEIVE/MODIFY BY TAKING TYPE AS INPUT
-
 A FUNCTION IS A TYPE IN GO
 
 ### FUNCTION
 ---
-ASSIGNS A FUNCTION TO A VARIABLE LIKE OTHER TYPES
+SINGLE RETURN
+
+func add (x int, y int) int {
+
+	return x + y, x
+	
+}
+
+MULTIPULE RETURNS
+
+func add (x, y int) (int, int) {
+
+	return x + y, x
+	
+}
+
+NAMED RETURN
+
+func split(sum int) (x, y int) {
+
+	x = sum * 4 / 9
+	
+	y = sum - x
+	
+	return
+}
+
+
+FUNCTION CAN BE ASSIGNED TO A VARIABLE LIKE OTHER TYPES
 
 func testF () {
 
@@ -598,27 +614,21 @@ MUST DEFINE INPUT AND OUTPUT FOR FUNCTION (IF THERE IS ONE)
 
 testF := func (x int) int {
 
-	return 5
+	return x
 	
 } (5)
-
-PASS A FUNCTION TO ANOTHER FUNCTION
-
-func testF2 (myFunc func(int) int) int {
-
-	return myFunc (5) + 1
-	
-}
 
 ### FUNCTION CLOSURE
 ---
 A NESTED FUNCTION THAT REFERENCES VARIABLES FROM OUTSIDE AND IS BEING RETURNED (EX. sum)
 
-A FUNCTION CLOSURE IS USED WHEN A STATE/ENVIRONMENT MUST BE REMEMBERED
+A FUNCTION CLOSURE IS USED WHEN
+
+A STATE/ENVIRONMENT MUST BE REMEMBERED (EX. sum)
 
 -OR-
 
-A CLASS WITH A SINGLE METHOD
+CLASS WITH SINGLE METHOD
 
 func adder() func(int) int {
 
@@ -651,8 +661,6 @@ func main() {
 	}
 	
 }
-
-sum WITHIN adder FUNCTION CONTINUTES TO BUILD UP WITHIN THE RETURNED FUNCTION
 
 POSSIBLE TO RETURN MAP OF FUNCTIONS
 

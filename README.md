@@ -731,42 +731,69 @@ PASSING A STRUCT AS POINTER IS NOT A MUST
 
 ### FUNCTION VS METHOD
 ---
-FUNCTION CAN BE USED ANYWHERE WHEREAS METHODS ARE ASSOCIATED WITH TYPE (class)
+FUNCTION CAN BE USED ANYWHERE
 
-A FUNCTION IS A TYPE IN GO
+EX. func getAge () int {}
+
+METHODS ARE ASSOCIATED WITH A CLASS (TYPE). TYPE MUST BE PROVIDED.
+
+EX. func (s Student) getAge () int{}
+
+### VALUE RECEIVE METHOD VS POINTER RECEIVE METHOD
+---
+VALUE RECEIVE METHOD CAN ONLY RECEIVE TYPET BUT CANNOT CHANGE THEM OUTSIDE OF ITS SCOPE
+
+POINTER RECEIVE METHOD CAN MODIFY VALUES/ATTRIBUTES OF THE TYPE (PROVIDE * ON INPUT TYPE TO SPECIFY POINTER)
+
+(IT MAY BE COMMON TO USE POINTER RECEIVE ALL THE TIME ON METHODS)
 
 ### VALUE RECEIVE METHOD
 ---
-VALUE RECEIVER ONLY RECEIVES VALUES AND THAT'S ALL THEY CAN DO. THEY CANNOT CHANGE VALUES OF THE TYPE
-
-VALUCE RECEIVER CAN CHANGE VALUES BUT IT WILL ONLY BE WITHIN SCOPE LIKE MAKING ITS OWN COPY
-
-IF THE TYPE IS HUGE, IT IS MORE EFFICIENT TO USE POINTER RECEIVER. WHEREAS IF THE OBJECT IS SMALL (ATTRIBUTES), IT CAN BE MORE EFFICIENT TO USE VALUE RECEIVER. 
-
-type Vertex struct {
-
-	X, Y float64
-	
+type Student struct {
+	name string
+	grades []int
+	age int
 }
 
-v = OBJECT VARIABLE
+func (s Student) getAverageGrade() int {
 
-func (v Vertex) Abs() float64 {
-
-	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+	sum := 0
+	
+	for _, v := range s.grades {
+	
+		sum += v
+		
+	}
+	
+	return float32 (sum) / float32 (len (s.grades))
 	
 }
 
 func main() {
 
-	v := Vertex{3, 4}
+	s1 := Student {"Tim", []int{10, 20 ,30}, 10}
 	
-	fmt.Println (v.Abs ())
+	s1.getAverageGrade ()
 	
 }
 
-WITH NON-STRUCT TYPE
+### POINTER RECEIVER METHOD
+---
 
+func (s *Student) setAge (age int) {
+	s.age = age
+}
+
+func main() {
+
+	s1 := Student {"Tim", []int{10, 20 ,30}, 10}
+	
+	s1.setAge (20)
+	
+}
+
+### NON-STRUCT TYPE METHOD
+---
 type MyFloat float64
 
 func (f MyFloat) Abs() float64 {
@@ -778,27 +805,6 @@ func (f MyFloat) Abs() float64 {
 	}
 	
 	return float64(f)
-	
-}
-
-### POINTER RECEIVER METHOD
----
-POINTER RECEIVER CAN MODIFY VALUES/ATTRIBUTES OF THE TYPE
-
-IF THE TYPE IS HUGE, IT IS MORE EFFICIENT TO USE POINTER RECEIVER. WHEREAS IF THE OBJECT IS SMALL (ATTRIBUTES), IT CAN BE MORE EFFICIENT TO USE VALUE RECEIVER.
-
-type Vertex struct {
-
-	X, Y float64
-	
-}
-
-THIS METHOD IS NOT RETURNING ANYTHING SO RETURN TYPE IS EMPTY
-func (v *Vertex) Scale(f float64) {
-
-	v.X = v.X * f
-	
-	v.Y = v.Y * f
 	
 }
 

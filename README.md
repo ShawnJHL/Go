@@ -12,9 +12,7 @@ Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzu
 
 ### RESEARCH
 ---
-INTERFACE
-
-STRINGER/ERROR STATE
+NONE
 
 ## COMPILE/RUN
 ---
@@ -936,20 +934,66 @@ func main() {
     
 }
 
-### Interface
+### INTERFACE
 ---
-type Abser interface {
+INTERFACE DEFINES SIMILAR BEHAVIORS BETWEEN TYPES/OBJECTES
 
-	Abs() float64
+ANY TYPE/STRUCT THAT HAS ALL THE SAME STRUCT METHODS (NAME, INPUT) & RETURN TYPES DEFINED IN INTERFACE CAN BE PART OF THE INTERFACE
+
+HOWEVER, BECAUSE OF THAT YOU CANNOT ACCESS INDIVIDUAL STRUCT'S ATTRIBUTES (WIDTH, HEIGHT, RADIUS), BUT ONLY WHAT'S DEFINED WITHIN THE INTERFACE (AREA)
+
+type shape interface {
+
+	area() float64
 	
 }
 
-### Error Handling
----
-f = i.(float64) // ERROR
+type circle struct {
 
-fmt.Println(f)
+	radius float64
+	
+}
 
-f, ok := i.(float64) // OK
+type rect struct {
 
-fmt.Println(f, ok)
+	width float64
+	
+	height float64
+	
+}
+
+EXAMPLE WITH POINTER AND VALUE RECEIVE METHODS
+
+type (r *rect) area() float64 {
+
+	return r.width* r.height
+	
+}
+
+type (c circle) area () float64 {
+
+	return 
+	
+}
+
+func getArea (s shape) float64 {
+
+	return s.area()
+	
+}
+
+func main () {
+
+	c1 := circle{4.5}
+	
+	r1 := rect {5, 7}
+	
+	shapes  := []shape{c1, &r1}
+	
+	shapes [0].area ()
+	
+	-OR-
+	
+	getArea (shapes)
+
+}

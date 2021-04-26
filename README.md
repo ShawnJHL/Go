@@ -2,8 +2,7 @@
 ***
 ### TIPS
 ---
-STATIC TYPE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)
-
+STATIC TYPE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)  
 ### Resources
 ---
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX
@@ -43,9 +42,11 @@ import (
 	
 	)
 ```
+
 TO IMPORT SUBPACKAGES
 ```Go
 import "math/rand"
+
 rand.Intn(100)
 ```
 

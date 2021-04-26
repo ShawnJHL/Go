@@ -3,25 +3,25 @@
 ### TIPS
 ---
 STATIC TYPE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)  
+
 ### Resources
 ---
-sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX
-
-Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q
+sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX  
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q  
 
 ## COMPILE/RUN
 ---
 TO COMILE AND RUN  
-go run script.go  
+> go run script.go  
 
 TO JUST COMPILE. THE COMPILED FILE CAN BE RUN ON ANY OS.  
-go build script.go  
+> go build script.go  
 
 ### PACKAGE
 ---
 EVERY GO PROGRAM IS MADE UP OF PACKAGES
 
-PROGRAMS START RUNNING IN PACKAGE MAIN
+package main
 
 ### IMPORT
 ---

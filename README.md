@@ -30,9 +30,11 @@ PROGRAMS START RUNNING IN PACKAGE MAIN
 ---
 ```Go
 import "fmt"
+```
 
 -OR-
 
+```Go
 import (
 
 	"fmt"
@@ -42,12 +44,10 @@ import (
 	)
 ```
 TO IMPORT SUBPACKAGES
-
+```Go
 import "math/rand"
-
-TO USE
-
 rand.Intn(100)
+```
 
 ### MAIN FUNCTION
 ---

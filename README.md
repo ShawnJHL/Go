@@ -3,7 +3,7 @@
 
 ### TIPS
 ---
-STATIC TYPE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)  
+STATIC TYPE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)
 
 ### Resources
 ---
@@ -12,16 +12,15 @@ Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzu
 
 ## COMPILE/RUN
 ---
-TO COMILE AND RUN  
+TO COMILE AND RUN
 > go run script.go  
 
-TO JUST COMPILE. THE COMPILED FILE CAN BE RUN ON ANY OS.  
+TO COMPILE ONLY. THE COMPILED FILE CAN BE RUN ON ANY OS
 > go build script.go  
 
 ### PACKAGE
 ---
 EVERY GO PROGRAM IS MADE UP OF PACKAGES
-
 ```Go
 package main
 ```
@@ -30,9 +29,9 @@ package main
 ---
 ```Go
 import "fmt"
-```
+
 -OR-
-```Go
+
 import (
 
 	"fmt"
@@ -51,44 +50,41 @@ rand.Intn(100)
 
 ### MAIN FUNCTION
 ---
-MAIN FUNCTION WILL ALWAYS RUN  
+MAIN FUNCTION WILL ALWAYS RUN
 ```Go
 func main() {}
 ```
 
 ### EXPORTED NAME
 ---
-A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME.
-
+A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME
 > math.Pi, fmt.Println (), ETC
 
 ### COMMENTS
 ---
-```Go
-// SINGLE LINE
-//
+SINGLE LINE
+> //
 
-// MULTIPLE LINES
-/* */
-```
+MULTIPLE LINES
+> /* */
 
 ### VARIABLE
 ---
-VARIABLES WITHOUT INITALIZERS  
+VARIABLES WITHOUT INITALIZERS
 ```Go
 var c, python, java bool
 ```
 
-VARIABLES WITH INITIALIZERS  
+VARIABLES WITH INITIALIZERS
 ```Go
 var i, j int = 1, 2
 
-var (
+-OR-
 
+var (
 	i int = 1
 	
 	j int = 2
-	
 )
 ```
 
@@ -102,48 +98,60 @@ k := 3
 ### IMPLICIT/EXPLICIT
 ---
 IMPLICIT - IMPLICITLY ASK GO TO DEFINE WHAT THIS VARIABLE SHOULD BE
-
+```Go
 var number = 260
-
+```
 EXPLICIT - EXPLICITLY DEFINED THE TYPE OF VARIABLE
-
+```Go
 var number uint16 = 260
-
+```
 IT IS POSSIBLE THAT WHAT GO DIFINED IS NOT WHAT YOU NEED
 
 ### TYPE
 ---
-bool
+- bool
+- string
+- int  
+	- int
+	- int8
+	- int16
+	- int32
+	- int64
+- uint
+	- uint
+	- uint8
+	- uint16
+	- uint32
+	- uint64
+	- uintptr
 
-string
+- byte - ALIAS FOR UINT8
 
-int  int8  int16  int32  int64
+- rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT
 
-uint uint8 uint16 uint32 uint64 uintptr
+- float
+	- float32
+	- float64
 
-byte // alias for uint8
+- complex
+	- complex64
+	- complex128
 
-rune // alias for int32, represents a Unicode code point
-
-float32 float64
-
-complex64 complex128
-
-func
+- func
 
 ### CONSTANT
 ---
-CONSTANT VARIABLES DO NOT CHANGE
-
+```Go
 const Pi = 3.14
+```
 
 ### QUOTES
 ---
-"" REPRESENTS A STRING (USER DOUBLE QUOTES)
+> "" REPRESENTS A STRING (USER DOUBLE QUOTES)
 
-'' REPRESENTS A CHARACTER
+> '' REPRESENTS A CHARACTER
 
-\`\` MULTILINE STRING
+> `` MULTILINE STRING
 
 ### PRINT
 ---

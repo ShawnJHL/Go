@@ -6,13 +6,9 @@ STATIC TYPE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)
 
 ### Resources
 ---
-sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX - 17
+sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX
 
-Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q - 16
-
-### RESEARCH
----
-NONE
+Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q
 
 ## COMPILE/RUN
 ---
@@ -32,6 +28,7 @@ PROGRAMS START RUNNING IN PACKAGE MAIN
 
 ### IMPORT
 ---
+```Go
 import "fmt"
 
 -OR-
@@ -43,7 +40,7 @@ import (
 	"math"
 	
 	)
-
+```
 TO IMPORT SUBPACKAGES
 
 import "math/rand"

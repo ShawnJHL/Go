@@ -21,16 +21,16 @@ TO JUST COMPILE. THE COMPILED FILE CAN BE RUN ON ANY OS.
 ---
 EVERY GO PROGRAM IS MADE UP OF PACKAGES
 
+```Go
 package main
+```
 
 ### IMPORT
 ---
 ```Go
 import "fmt"
 ```
-
 -OR-
-
 ```Go
 import (
 
@@ -50,10 +50,10 @@ rand.Intn(100)
 
 ### MAIN FUNCTION
 ---
-MAIN FUNCTION WILL ALWAYS RUN
-
-func main() {
-}
+MAIN FUNCTION WILL ALWAYS RUN  
+```Go
+func main() {}
+```
 
 ### EXPORTED NAME
 ---
@@ -61,12 +61,14 @@ A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME.
 
 ALL THE FUNCTIONS FROM A PACKAGE START WITH CAPITAL LETTERS.
 
-math.Pi, fmt.Println (), ETC
+> math.Pi, fmt.Println (), ETC
 
 ### COMMENTS
 ---
-// FOR SINGLE LINE
-/* */ FOR MULTIPLE LINES
+```Go
+// - SINGLE LINE
+/* */ - MULTIPLE LINES
+```
 
 ### VARIABLE
 ---

@@ -11,13 +11,11 @@ Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzu
 
 ## COMPILE/RUN
 ---
-TO COMILE AND RUN
+TO COMILE AND RUN  
+go run script.go  
 
-go run script.go
-
-TO JUST COMPILE. THE COMPILED FILE CAN BE RUN ON ANY OS.
-
-go build script.go
+TO JUST COMPILE. THE COMPILED FILE CAN BE RUN ON ANY OS.  
+go build script.go  
 
 ### PACKAGE
 ---

@@ -58,15 +58,23 @@ func main() {}
 ### EXPORTED NAME
 ---
 A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME
-> math.Pi, fmt.Println (), ETC
+```Go
+math.Pi
+fmt.Println
+ETC
+```
 
 ### COMMENTS
 ---
 SINGLE LINE
-> //
+```Go
+//
+```
 
 MULTIPLE LINES
-> /* */
+```Go
+/* */
+```
 
 ### VARIABLE
 ---
@@ -78,9 +86,9 @@ var c, python, java bool
 VARIABLES WITH INITIALIZERS
 ```Go
 var i, j int = 1, 2
-
+```
 -OR-
-
+```Go
 var (
 	i int = 1
 	
@@ -109,35 +117,30 @@ IT IS POSSIBLE THAT WHAT GO DIFINED IS NOT WHAT YOU NEED
 
 ### TYPE
 ---
-- bool
-- string
-- int  
-	- int
-	- int8
-	- int16
-	- int32
-	- int64
+bool  
+string  
+int
+- int
+- int8
+- int16
+- int32
+- int64
+uint
 - uint
-	- uint
-	- uint8
-	- uint16
-	- uint32
-	- uint64
-	- uintptr
-
-- byte - ALIAS FOR UINT8
-
-- rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT
-
-- float
-	- float32
-	- float64
-
-- complex
-	- complex64
-	- complex128
-
-- func
+- uint8
+- uint16
+- uint32
+- uint64
+- uintptr
+byte - ALIAS FOR UINT8  
+rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT  
+float
+- float32
+- float64
+complex
+- complex64
+- complex128
+func
 
 ### CONSTANT
 ---

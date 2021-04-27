@@ -330,7 +330,7 @@ a[1] = "World"
 ```Go
 primes := [6]int{2, 3, 5, 7, 11, 13}
 ```
--OR-  
+
 MULTIDIMENTIONAL ARRAY
 ```Go
 arr2D := [2][2]int{{1,2},{3,4}}

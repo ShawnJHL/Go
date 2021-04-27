@@ -25,19 +25,16 @@ EVERY GO PROGRAM IS MADE UP OF PACKAGES
 package main
 ```
 
-### IMPORT
+### IMPORT MODULES/PACKAGES
 ---
 ```Go
 import "fmt"
-
+```
 -OR-
-
+```Go
 import (
-
 	"fmt"
-	
 	"math"
-	
 	)
 ```
 
@@ -58,11 +55,7 @@ func main() {}
 ### EXPORTED NAME
 ---
 A NAME IS EXPORTED IF IT STARTS WITH A CAPITAL NAME
-```Go
-math.Pi
-fmt.Println
-ETC
-```
+> EX. math.Pi, fmt.Println, ETC.
 
 ### COMMENTS
 ---
@@ -91,7 +84,6 @@ var i, j int = 1, 2
 ```Go
 var (
 	i int = 1
-	
 	j int = 2
 )
 ```
@@ -248,7 +240,7 @@ if v < 10 {
 }
 ```
 
-IF CAN START WITH A DECLARATION AND THIS VARIABLE EXISTS WITHIN THE IF/ELSEIF/ELSE SCOPE
+IT CAN START WITH A DECLARATION AND THE VARIABLE EXIST WITHIN THE IF/ELSEIF/ELSE SCOPE
 ```Go
 if v := 5; v < 10 {
 } else if v == 10 {

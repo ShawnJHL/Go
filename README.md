@@ -818,10 +818,10 @@ SEND AND RECEIVE PART OF CHANNEL IS GOING TO BLOCK (WITHOUTIT PROGRAM CAN FINISH
 ```Go
 var wg sync.WaitGroup
 
-func foo(c chan int, someValue int) {
+func foo(ch chan int, someValue int) {
     defer wg.Done()
     
-    c <- someValue * 5
+    ch <- someValue * 5
 }
 
 func main() {

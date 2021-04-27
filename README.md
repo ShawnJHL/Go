@@ -423,42 +423,34 @@ APPEND
 append (array, element)
 ```
 
-### STRUCT/HASHTABLE/MAP
+### HASHTABLE/HASHSET
 ---
 ```Go
-type Vertex struct {
-	Lat, Long float64
-}
+m := make(map[string]string)
+
+m["Bell Labs"] = "VALUE"
 ```
-
-YOU NEED TO USE MAKE IF YOU ARE ONLY INITAILIZING AND THEN ASSIGN KEY VALUE LATER
+-OR-
 ```Go
-m := make(map[string]Vertex)
-
-m["Bell Labs"] = Vertex{
-	40.68433, -74.39967,
+var m = map[string]string{
+	"Bell Labs": string {"VALUE1"},
+	"Google": string {"VALUE2"},
 }
 ```
 -OR-
 ```Go
-var m = map[string]Vertex{
-	"Bell Labs": Vertex{
-		40.68433, -74.39967,
-	},
-	"Google": Vertex{
-		37.42202, -122.08408,
-	},
-}
-```
--OR-
-```Go
-var m = map[string]Vertex{
-	"Bell Labs": {40.68433, -74.39967},
-	"Google":    {37.42202, -122.08408},
+var m = map[string]string{
+	"Bell Labs": "VALUE1",
+	"Google":    VALUE2",
 }
 ```
 
-### MAP/HASHTABLE FUNCTION
+SET DOESN'T EXIST IN GOLANG BUT EQUIVALENT TO
+```Go
+set := make(map[string]bool)
+```
+
+### HASHTABLE FUNCTIONS
 ---
 INSERT/UPDATE
 ```Go

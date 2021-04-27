@@ -124,7 +124,8 @@ int
 - int8
 - int16
 - int32
-- int64  
+- int64
+
 uint  
 - uint
 - uint8
@@ -132,14 +133,17 @@ uint
 - uint32
 - uint64
 - uintptr
+
 byte - ALIAS FOR UINT8  
 rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT  
 float
 - float32
 - float64
+
 complex
 - complex64
 - complex128
+
 func
 
 ### CONSTANT

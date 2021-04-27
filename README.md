@@ -117,15 +117,15 @@ IT IS POSSIBLE THAT WHAT GO DIFINED IS NOT WHAT YOU NEED
 
 ### TYPE
 ---
-bool
-string
+bool  
+string  
 int
 - int
 - int8
 - int16
 - int32
 - int64
-uint
+uint  
 - uint
 - uint8
 - uint16
@@ -137,7 +137,7 @@ rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT
 float
 - float32
 - float64
-complex  
+complex
 - complex64
 - complex128
 func
@@ -225,9 +225,9 @@ NEW LINE
 TAB
 - \t
 
-### CONDITION & BOOLEAN EXPRESSION
+### COMPARISON
 ---
-COMPARING VARIABLES MUST BE THE SAME TYPE
+ALL COMPARISON MUST BE THE SAME TYPE
 ```Go
 x := 5
 y := 5.5
@@ -257,13 +257,12 @@ if v := 5; v < 10 {
 SWITCH RUNS THE FIRST CAST THAT SATISFIES CONDITION
 ```Go
 switch os := runtime.GOOS; os {
-
-case "darwin", "another match":
-	fmt.Println("OS X.")
-case "linux":
-	fmt.Println("Linux.")
-default:
-	fmt.Printf("%s.\n", os)
+	case "darwin", "another match":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		fmt.Printf("%s.\n", os)
 }
 ```
 
@@ -332,7 +331,7 @@ a[0] = "Hello"
 a[1] = "World"
 ```
 -OR-
-```Go	
+```Go
 primes := [6]int{2, 3, 5, 7, 11, 13}
 ```
 -OR-  
@@ -371,7 +370,7 @@ names := [2]string{
 }
 ```
 
-SLICE OPERATOR :, IF START INDEX IS NOT SET DEFAULT IS 0 IF END INDEX IS NOT SET ITS SIZE OF THE ARRAY
+SLICE OPERATOR : IF START INDEX IS NOT SET DEFAULT IS 0 IF END INDEX IS NOT SET ITS SIZE OF THE ARRAY
 ```Go
 b := names[:]
 
@@ -424,9 +423,7 @@ append (array, element)
 ---
 ```Go
 type Vertex struct {
-
 	Lat, Long float64
-	
 }
 ```
 
@@ -488,222 +485,187 @@ len (map)
 ---
 A DEFER STATEMENT DEFERS THE EXECUTION OF A FUNCTION UNTIL OTHERS ARE DONE/PANIC AND STACKS
 
+```Go
 fmt.Println("counting")
 
 for i := 0; i < 10; i++ {
-
 	defer fmt.Println(i)
-	
 }
 
 fmt.Println("done")
+```
 
 ### FUNCTION
 ---
 WHEN A FUNCTION IS DEFINED, INPUT AND OUTPUT FOR FUNCTION MUST BE DEFINED ALSO (IF THERE IS ONE)
 
 SINGLE RETURN
-
+```Go
 func add (x int, y int) int {
-
 	return x + y, x
-	
 }
+```
 
 MULTIPULE RETURNS
-
+```Go
 func add (x, y int) (int, int) {
-
 	return x + y, x
-	
 }
+```
 
 NAMED RETURN
-
+```Go
 func split(sum int) (x, y int) {
-
 	x = sum * 4 / 9
-	
 	y = sum - x
 	
 	return
 }
+```
 
 ### FUNCTION AS A TYPE/VALUE
 ---
 FUNCTION CAN BE ASSIGNED TO A VARIABLE LIKE OTHER TYPES
-
+```Go
 func testF () {
-
 }
 
 test := testF ()
-
+```
 -OR-
-
+```Go
 test := func testF(){
 }
+```
 
 EXCUTE THE FUNCTION RIGHT AWAY AND ASSIGN THE RETURN TO A VARIABLE
-
+```Go
 testF := func (x int) int {
-
 	return x
-	
 } (5)
+```
 
 ### FUNCTION CLOSURE
 ---
-A NESTED FUNCTION THAT REFERENCES VARIABLES FROM OUTSIDE AND IS BEING RETURNED (EX. sum)
+A NESTED FUNCTION THAT REFERENCES VARIABLES FROM OUTSIDE AND IS BEING RETURNED (EX. sum)  
 
-A FUNCTION CLOSURE IS USED WHEN:
+A FUNCTION CLOSURE IS USED WHEN:  
+- A STATE/ENVIRONMENT MUST BE REMEMBERED (EX. sum)  
+- CLASS WITH SINGLE METHOD
 
-A STATE/ENVIRONMENT MUST BE REMEMBERED (EX. sum)
-
--OR-
-
-CLASS WITH SINGLE METHOD
-
+```Go
 func adder() func(int) int {
-
 	sum := 0
 	
 	return func(x int) int {
-	
 		sum += x
-		
 		return sum
-		
 	}
-	
 }
 
 func main() {
-
 	pos, neg := adder(), adder()
 	
 	for i := 0; i < 10; i++ {
-	
 		fmt.Println(
-		
 			pos(i),
-			
 			neg(-2*i),
-			
 		)
-		
 	}
-	
 }
+```
 
 POSSIBLE TO RETURN MAP OF FUNCTIONS
 
 ### MUTTABLE & IMMUTABLE
 ---
 MUTABLE - CANNOT CHANGE (COPIES THE CONTENT IN RAM)
-
-	VARIABLE
-	
-	ARRAY (FIXED SIZE)
+- VARIABLE
+- ARRAY (FIXED SIZE)
 
 IMMUTABLE - CAN CHANGE (COPIES THE POINTER IN RAM)
-
-	SLICE
-	
-	MAP
+- SLICE
+- MAP
 
 ### POINTER/REFERENCE & DEREFERENCE
 ---
-& - POINT TO MEMORY ADDRESS/REFERENCE/POINTER
+& - POINT TO MEMORY ADDRESS/REFERENCE/POINTER  
+* - READ THROUGH MEMORY ADDRESS/DEREFERENCE  
 
-* - READ THROUGH MEMORY ADDRESS/DEREFERENCE
-
+```Go
 i, j := 42, 2701
 
 p := &i
 
 *p = 21
+```
 
 -OR-
 
+```Go
 toChange := "hello"
 
 var pointer *string = &toChange
-
-*DATA TYPE - POINTER TO THAT DATA TYPE
-
-*VARIABLE NAME - GET THE VALUE OF THE VARIABLE
+```
 
 FUNCTION CAN ALSO RECEIVE POINTER(s) AS INPUT AND DEREFERENCE (SO THE VARIABLE CAN BE CHANGED WITHIN THE FUNCTION)
-
+```Go
 func changeValue (str *string) {
-
 	*str = "NEW STRING"
-	
 }
+```
 
 ### STRUCT (CUSTOM STRUCTURE)
 ---
 STRUCT IS A TYPE SO ALWAYS START WITH A CAPITAL LETTER
 
+```Go
 type Vertex struct {
-
 	X int
-	
 	Y int
-	
 }
 
 func main() {
-
 	v := Vertex {1, 2}
 	
-	-OR-
-	
 	v := Vertex {X:1}
-	
-	-OR-
-	
+
 	v Vertex = Vertex {1, 2}
-	
 	v.X = 4
 }
+```
 
-TO PASS A STRUC TYPE AS POINTER/REFERENCE (SO YOU CAN CHANGE VALUES OF STRUCT)
-
+TO PASS A STRUC TYPE AS POINTER/REFERENCE (SO YOU CAN CHANGE VALUES OF STRUCT)  
 YOU DO NOT HAVE TO USE * (DEREFERENCE) ON STRUCT TYPE
-
+```Go
 func changeX (pt *Vertex) {
-
 	pt.X = 0
-	
 }
 
 v := &Vertex {100, 100}
 
 changeX (v)
+```
 
 ### EMBEDDED STRUCT
 ---
-
 STRUCT IN ANOTHER STRUCT
 
+```Go
 type Circle struct {
-
 	radius float64
-	
 	center *Point
-	
 }
 
 c1 := Circle {1.11, &Point (1, 1)
 
 c1.center.x = 5
+```
 
 -OR-
 
 NAMING A STRUCT IS NOT NECESSARY AS LONG AS THERE ARE NO DUPLICATE ATTRIBUTE NAMES
-
+```Go
 type Circle struct {
 	radisu float64
 	*Point
@@ -712,29 +674,29 @@ type Circle struct {
 c1 := Circle {1.11, &Point (1, 1)
 
 c1.x = 5
+```
 
 PASSING A STRUCT AS POINTER IS NOT A MUST
 
 ### FUNCTION VS METHOD
 ---
 FUNCTION CAN BE USED ANYWHERE
-
-EX. func getAge () int {}
+> EX. func getAge () int {}
 
 METHODS ARE ASSOCIATED WITH A CLASS (TYPE). TYPE MUST BE PROVIDED.
-
-EX. func (s Student) getAge () int{}
+> EX. func (s Student) getAge () int{}
 
 ### VALUE RECEIVE METHOD VS POINTER RECEIVE METHOD
 ---
-VALUE RECEIVE METHOD CAN ONLY RECEIVE TYPET BUT CANNOT CHANGE THEM OUTSIDE OF ITS SCOPE
+VALUE RECEIVE METHOD CAN ONLY RECEIVE TYPET BUT CANNOT CHANGE THEM OUTSIDE OF ITS SCOPE  
 
-POINTER RECEIVE METHOD CAN MODIFY VALUES/ATTRIBUTES OF THE TYPE (PROVIDE * ON INPUT TYPE TO SPECIFY POINTER)
+POINTER RECEIVE METHOD CAN MODIFY VALUES/ATTRIBUTES OF THE TYPE (PROVIDE * ON INPUT TYPE TO SPECIFY POINTER)  
 
 (IT MAY BE COMMON TO USE POINTER RECEIVE ALL THE TIME ON METHODS)
 
 ### VALUE RECEIVE METHOD
 ---
+```Go
 type Student struct {
 	name string
 	grades []int
@@ -742,143 +704,122 @@ type Student struct {
 }
 
 func (s Student) getAverageGrade() int {
-
 	sum := 0
 	
 	for _, v := range s.grades {
-	
 		sum += v
-		
 	}
 	
 	return float32 (sum) / float32 (len (s.grades))
-	
 }
 
 func main() {
-
 	s1 := Student {"Tim", []int{10, 20 ,30}, 10}
 	
 	s1.getAverageGrade ()
-	
 }
+```
 
 ### POINTER RECEIVER METHOD
 ---
-
+```Go
 func (s *Student) setAge (age int) {
 	s.age = age
 }
 
 func main() {
-
 	s1 := Student {"Tim", []int{10, 20 ,30}, 10}
 	
 	s1.setAge (20)
-	
 }
+```
 
 ### NON-STRUCT TYPE METHOD
 ---
+```Go
 type MyFloat float64
 
 func (f MyFloat) Abs() float64 {
-
 	if f < 0 {
-	
 		return float64(-f)
-		
 	}
 	
 	return float64(f)
 	
 }
+```
 
 ### CONCURRENCY / GO ROUTINES
 ---
 CONCURRENCY (go) IS LIKE DEALING WITH MULTIPLE THINGS (THREADS) AT ANY ONE TIME
 
+```Go
 func say(s string) {
-
 	for i:=0; i < 3; i++ {
-	
 		time.Sleep(100*time.Millisecond)
 		
 		fmt.Println(s)
-		
 	}	
-	
 }
 
 func main() {
-
 	go say("Hey")
-	
 	say("there")
-	
 }
+```
 
 ### SYNCRONIZATION
 ---
-
 SYNCRONIZATION IS USED TO MARK EACH THREAD AS START AND COMPLETE SO OS CAN WAIT FOR THEM TO FINISH
 
+```Go
 var wg sync.WaitGroup
 
 func cleanup () {
-
-  if r := recover (); r != nil {
+	if r := recover (); r != nil {
   
-    fmt.Println ("RECOVERED IN CLEANUP", r)
+   	fmt.Println ("RECOVERED IN CLEANUP", r)
     
-  }
-  
+ 	}
 }
 
 func say (s string) {
+	# MARK DONE
+	defer wg.Done ()
 
-MARK DONE
-  defer wg.Done ()
-
-CHECK FOR PANIC AND RECOVER FROM IT
-  defer cleanup ()
+	# CHECK FOR PANIC AND RECOVER FROM IT
+ 	 defer cleanup ()
   
-  for i:= 0; i < 3; i++ {
-  
-    fmt.Println (s)
+	for i:= 0; i < 3; i++ {
+		fmt.Println (s)
     
-    time.Sleep (time.Millisecond * 100)
+  		time.Sleep (time.Millisecond * 100)
     
-    if i == 2 {
-    
-      panic ("OH DEAR 2")
-      
-    }
-    
-  }
-  
+  		if i == 2 {
+    	 	 	panic ("OH DEAR 2")
+		}
+	}
 }
 
 func main () {
-
-MARK START
-  wg.Add (1)
+	# MARK START
+	wg.Add (1)
   
-  go say ("HEY")
+ 	go say ("HEY")
   
-MARK START
-  wg.Add (1)
+	# MARK START
+  	wg.Add (1)
   
-  go say ("THERE")
+ 	go say ("THERE")
   
-WAIT FOR ALL THREADS TO BE COMPLETED
-  wg.Wait ()
+	# WAIT FOR ALL THREADS TO BE COMPLETED
+  	wg.Wait ()
   
-  go say ("HI")
+  	go say ("HI")
   
-  wg.Wait ()
-  
+ 	wg.Wait ()
 }
+```
 
 ### CHANNEL
 ---
@@ -886,28 +827,23 @@ CHANNEL <- IN GO IS TO USE THEM WITH GO ROUTINES TO SEND AND RECEIVE VALUES BETW
 
 SEND AND RECEIVE PART OF CHANNEL IS GOING TO BLOCK (WITHOUTIT PROGRAM CAN FINISH BEFORE THE CONCURRENCY IS DONE) GO ROUTINES SO YOU DON'T HAVE TO WAIT FOR THEM
 
+```Go
 var wg sync.WaitGroup
 
 func foo(c chan int, someValue int) {
-
     defer wg.Done()
     
     c <- someValue * 5
-    
 }
 
 func main() {
-
-    TYPE, BUFFER SIZE
-    
+    # TYPE, BUFFER SIZE
     fooVal := make(chan int, 10)
     
     for i := 0; i < 10; i++ {
-    
         wg.Add(1)
 	
         go foo(fooVal, i)
-	
     }
     
     wg.Wait()
@@ -915,73 +851,54 @@ func main() {
     close(fooVal)
     
     for item := range fooVal {
-    
         fmt.Println(item)
-	
     }
-    
 }
+```
 
 ### INTERFACE
 ---
-INTERFACE DEFINES SIMILAR BEHAVIORS BETWEEN TYPES/OBJECTES
-
-ANY TYPE/STRUCT THAT HAS ALL THE SAME STRUCT METHODS (NAME, INPUT) & RETURN TYPES DEFINED IN INTERFACE CAN BE PART OF THE INTERFACE
-
+INTERFACE DEFINES SIMILAR BEHAVIORS BETWEEN TYPES/OBJECTES  
+ANY TYPE/STRUCT THAT HAS ALL THE SAME STRUCT METHODS (NAME, INPUT) & RETURN TYPES DEFINED IN INTERFACE CAN BE PART OF THE INTERFACE  
 HOWEVER, BECAUSE OF THAT YOU CANNOT ACCESS INDIVIDUAL STRUCT'S ATTRIBUTES (WIDTH, HEIGHT, RADIUS), BUT ONLY WHAT'S DEFINED WITHIN THE INTERFACE (AREA)
-
+```Go
 type shape interface {
-
 	area() float64
-	
 }
 
 type circle struct {
-
 	radius float64
-	
 }
 
 type rect struct {
-
 	width float64
-	
 	height float64
-	
 }
 
-EXAMPLE WITH POINTER AND VALUE RECEIVE METHODS
+# EXAMPLE WITH POINTER AND VALUE RECEIVE METHODS
 
 type (r *rect) area() float64 {
-
 	return r.width* r.height
-	
 }
 
 type (c circle) area () float64 {
-
 	return 
-	
 }
 
 func getArea (s shape) float64 {
-
 	return s.area()
-	
 }
 
 func main () {
-
 	c1 := circle{4.5}
 	
 	r1 := rect {5, 7}
 	
 	shapes  := []shape{c1, &r1}
-	
 	shapes [0].area ()
 	
-	-OR-
+	# -OR-
 	
 	getArea (shapes)
-
 }
+```

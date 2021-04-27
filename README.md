@@ -117,30 +117,30 @@ IT IS POSSIBLE THAT WHAT GO DIFINED IS NOT WHAT YOU NEED
 
 ### TYPE
 ---
-bool  
-string  
-int
+- bool
+- string
 - int
-- int8
-- int16
-- int32
-- int64
-uint
+	- int
+	- int8
+	- int16
+	- int32
+	- int64
 - uint
-- uint8
-- uint16
-- uint32
-- uint64
-- uintptr
-byte - ALIAS FOR UINT8  
-rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT  
-float
-- float32
-- float64
-complex
-- complex64
-- complex128
-func
+	- uint
+	- uint8
+	- uint16
+	- uint32
+	- uint64
+	- uintptr
+- byte - ALIAS FOR UINT8
+- rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT
+- float
+	- float32
+	- float64
+- complex
+	- complex64
+	- complex128
+- func
 
 ### CONSTANT
 ---
@@ -150,53 +150,59 @@ const Pi = 3.14
 
 ### QUOTES
 ---
-> "" REPRESENTS A STRING (USER DOUBLE QUOTES)
+REPRESENTS A STRING (USER DOUBLE QUOTES)
+```Go
+""
+```
 
-> '' REPRESENTS A CHARACTER
+REPRESENTS A CHARACTER
+```Go
+'' 
+```
 
-> `` MULTILINE STRING
+MULTILINE STRING
+```Go
+``
+```
 
 ### PRINT
 ---
-fmt.Println () - PRINT LINE
+PRINT LINE
+```Go
+fmt.Println ()
+```
 
-fmt.Sprint () - STORE FORMATTED STRING TO VARIABLE
+PRINT FORMATTED STRING OR WITHOUT NEWLINE
+```Go
+fmt.Printf ()
+```
 
-fmt.Printf () - PRINT FORMATTED STRING OR WITHOUT NEWLINE
+STORE FORMATTED STRING TO VARIABLE
+```Go
+fmt.Sprint ()
+```
 
 ### FORMATTING
 ---
-GENERAL
+GENERAL  
+- %v - VALUE
+- %T - TYPE  
+- %% - PERCENT SIGN  
 
-%v - VALUE
+BOOLEAN  
+- %t - BOOLEARN
 
-%T - TYPE
+INTEGER  
+- %b - BASE 2 (BINARY REPRESENTATION)
+- %o - BASE 8 (OCTAL DECIMAL)
+- %d - BASE 10 (BASE, DECIMAL)
+- %x - BASE 16 LOWER (HEXADECIMAL)
+- %X - BASE 16 UPPER (HEXADECIMAL)
 
-%% - PERCENT SIGN
-
-BOOLEAN
-
-%t - BOOLEARN
-
-INTEGER
-
-%b - BASE 2 (BINARY REPRESENTATION)
-
-%o - BASE 8 (OCTAL DECIMAL)
-
-%d - BASE 10 (BASE, DECIMAL)
-
-%x - BASE 16 LOWER (HEXADECIMAL)
-
-%X - BASE 16 UPPER (HEXADECIMAL)
-
-FLOATING POINTS
-
-%e - SCIENTIFIC NOTATION OF e
-
-%f / %F - DECIMAL TO EXPONENT
-
-%g - LARGET DECIMAL TO EXPONENT
+FLOATING POINTS  
+- %e - SCIENTIFIC NOTATION OF e
+- %f / %F - DECIMAL TO EXPONENT
+- %g - LARGET DECIMAL TO EXPONENT
 
 STRINGS
 

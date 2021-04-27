@@ -117,30 +117,30 @@ IT IS POSSIBLE THAT WHAT GO DIFINED IS NOT WHAT YOU NEED
 
 ### TYPE
 ---
-- bool
-- string
+bool
+string
+int
 - int
-	- int
-	- int8
-	- int16
-	- int32
-	- int64
+- int8
+- int16
+- int32
+- int64
+uint
 - uint
-	- uint
-	- uint8
-	- uint16
-	- uint32
-	- uint64
-	- uintptr
-- byte - ALIAS FOR UINT8
-- rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT
-- float
-	- float32
-	- float64
-- complex
-	- complex64
-	- complex128
-- func
+- uint8
+- uint16
+- uint32
+- uint64
+- uintptr
+byte - ALIAS FOR UINT8  
+rune - ALIAS FOR INT32, REPRESENTS A UNICODE POINT  
+float
+- float32
+- float64
+complex  
+- complex64
+- complex128
+func
 
 ### CONSTANT
 ---
@@ -228,7 +228,6 @@ TAB
 ### CONDITION & BOOLEAN EXPRESSION
 ---
 COMPARING VARIABLES MUST BE THE SAME TYPE
-
 ```Go
 x := 5
 y := 5.5
@@ -238,273 +237,252 @@ z = x == int (y)
 
 ### CONDITIONAL STATEMENT (IF)
 ---
+```Go
 v = 5
 
 if v < 10 {
-
 }
+```
 
-IF CAN START WITH A DECLARATION AND THIS VARIABLE IS ALSO AVAILABLE IN ELSE BLOCKS
-
+IF CAN START WITH A DECLARATION AND THIS VARIABLE EXISTS WITHIN THE IF/ELSEIF/ELSE SCOPE
+```Go
 if v := 5; v < 10 {
-
-} elses if v == 10 {
-
+} else if v == 10 {
 } else {
-	
 }
+```
 
 ### SWITCH
 ---
 SWITCH RUNS THE FIRST CAST THAT SATISFIES CONDITION
-
+```Go
 switch os := runtime.GOOS; os {
 
 case "darwin", "another match":
-
 	fmt.Println("OS X.")
-	
 case "linux":
-
 	fmt.Println("Linux.")
-	
 default:
-
-	// freebsd, openbsd,
-	
-	// plan9, windows...
-	
 	fmt.Printf("%s.\n", os)
-	
 }
+```
 
 SWITCH WITHOUT A CONDITION IS SAME AS SWITCH TRUE
-
+```Go
 os := runtime.GOOS
 
 switch {
-
-case os == "darwin":
-
-	fmt.Println("OS X.")
-	
-case os =="linux":
-
-	fmt.Println("Linux.")
-	
-default:
-
-	// freebsd, openbsd,
-	
-	// plan9, windows...
-	
-	fmt.Printf("%s.\n", os)
-	
+	case os == "darwin":
+		fmt.Println("OS X.")
+	case os =="linux":
+		fmt.Println("Linux.")
+	default:
+		fmt.Printf("%s.\n", os)
 }
+```
 
 ### FOR LOOP / WHILE LOOP
 ---
 INIT; CONDITION; POST
-
+```Go
 for i := 0; i < 10; i++ {
-
 	fmt.Println (i)
-	
 }
+```
 
-INIT, CONDITION, POST ARE OPTIONAL (INIFINITE LOOP)
-
+WHILE LOOP
+```Go
 sum := 1
 
 for sum < 1000 {
-
 	sum += sum
-	
 }
-
+```
+-OR-
+```Go
 x := 5
 
 for {
-
 	x += 3
 	
 	if x > 5 {
-	
 		break
 	}
 }
+```
 
 ### RANGE
 ---
-
 ITERATE ARRAY, SLICE, AND MAP (YOU CAN USE _ AS VARIABLE TO UNASSIGN)
-
+```Go
 var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
 
 for i, v := range pow {
-
 	fmt.Printf("2**%d = %d\n", i, v)
-	
 }
+```
 
 ### ARRAY
 ---
-ARRAY CANNOT BE RESIZED
-
-ARRAY/SLICE CAN ONLY STORE ONE TYPE OF DATA (STRING, INT, ETC)
-
+ARRAY CANNOT BE RESIZED AND CAN ONLY STORE ONE TYPE OF DATA
+```Go
 var a [2]string
 
 a[0] = "Hello"
-
 a[1] = "World"
-
+```
 -OR-
-	
+```Go	
 primes := [6]int{2, 3, 5, 7, 11, 13}
-
--OR-
-
+```
+-OR-  
 MULTIDIMENTIONAL ARRAY
-
+```Go
 arr2D := [2][2]int{{1,2},{3,4}}
+```
 
 ### Slice
 ---
-SLICE CAN BE DYNAMICALLY SIZED
-
-ARRAY/SLICE CAN ONLY STORE ONE TYPE OF DATA (STRING, INT, ETC)
-
+SLICE CAN BE DYNAMICALLY SIZED AND CAN ONLY STORE ONE TYPE OF DATA
+```Go
 q := []int{2, 3, 5, 7, 11, 13}
-
+```
 -OR-
-
+```Go
 r := []bool{true, false, true, true, false, true}
-
+```
 -OR-
-
+```Go
 s := []struct {
-
 	i int
-	
 	b bool
 	
 }{
-
 	{2, true},
-	
 	{3, false}
 }
+```
 
 SLICE IS LIKE REFERENCES TO ARRAYS (IF YOU CHANGE IT, ORIGINAL ARRAY/SLICE CHANGES)
-
+```Go
 names := [2]string{
-
 	"John",
-	
 	"Paul",
-	
 }
+```
 
 SLICE OPERATOR :, IF START INDEX IS NOT SET DEFAULT IS 0 IF END INDEX IS NOT SET ITS SIZE OF THE ARRAY
-
+```Go
 b := names[:]
 
 b[0] = "XXX" (JOHN BECOMES XXX)
+```
 
 STARTING INDEX OF SLICE WILL COMPLETELY DROP PREVIOUS ELEMENTS (START INDEX IS NOT ADJUSTABLE AND BECOMES BASE WHEREAS END INDEX IS ADJUSTABLE)
-
+```Go
 s := []int{2, 3, 5, 7, 11, 13}
-
 s = s[:0] (LENGTH 0, CAPACITY (6)
-
 s = s[:4] (LENGTH 4, CAPACITY 6)
-
 s = s[2:] (LENGTH 2, CAPACITY 4, DROPS THE FIRST TWO ELEMENTS)
-
 s = s[0:4] (LENGTH 4, CAPACITY 4)
+```
 
 MULTIDIMENTIONAL SLICE
-
+```Go
 board := [][]string{
-
 	[]string{"_", "_", "_"},
-
 	[]string{"_", "_", "_"},
-
 	[]string{"_", "_", "_"},
-
 }
 
 board[0][0] = "X"
+```
 
 MAKE CAN BE USED TO SET LENGTH AND CAPACITY
-
+```Go
 b := make([]int, 0, 5) (LENGTH 0, CAPACITY 5)
+```
 
 ### ARRAY/SLICE FUNCTION
 ---
-len (array) - LENGTH
+LENGTH
+```Go
+len (array)
+```
 
-cap (array) - CAPACITY
+CAPACITY
+```Go
+cap (array)
+```
 
-append (array, element) - APPEND
+APPEND
+```Go
+append (array, element)
+```
 
-### HASHTABLE/MAP
+### STRUCT/HASHTABLE/MAP
 ---
+```Go
 type Vertex struct {
 
 	Lat, Long float64
 	
 }
+```
 
 YOU NEED TO USE MAKE IF YOU ARE ONLY INITAILIZING AND THEN ASSIGN KEY VALUE LATER
-
+```Go
 m := make(map[string]Vertex)
 
 m["Bell Labs"] = Vertex{
-
 	40.68433, -74.39967,
-
 }
-
+```
 -OR-
-
+```Go
 var m = map[string]Vertex{
-
 	"Bell Labs": Vertex{
-	
 		40.68433, -74.39967,
-
 	},
 	"Google": Vertex{
-	
 		37.42202, -122.08408,
-
 	},
 }
-
+```
 -OR-
-
+```Go
 var m = map[string]Vertex{
-
 	"Bell Labs": {40.68433, -74.39967},
-	
 	"Google":    {37.42202, -122.08408},
-	
 }
+```
 
 ### MAP/HASHTABLE FUNCTION
 ---
-map[key] = value - INSERT/UPDATE
+INSERT/UPDATE
+```Go
+map[key] = value
+```
 
-map[key] - RETRIEVE
+RETRIEVE
+```Go
+map[key]
+```
 
-delete (map, key) - DELETE
+DELETE
+```Go
+delete (map, key)
+```
 
-value, ok = m[key] - CHECK IF A KEY EXISTS (ok = TRUE IF EXIST OTHERWISE FALSE, VALUE WILL BE DEFAULT TO 0 IF NOT EXIST)
+CHECK IF A KEY EXISTS (ok = TRUE IF EXIST OTHERWISE FALSE, VALUE WILL BE DEFAULT TO 0 IF NOT EXIST)
+```Go
+value, ok = m[key]
+```
 
-len (map) - SIZE OF MAP
+SIZE OF MAP
+```Go
+len (map)
+```
 
 ### DEFER
 ---

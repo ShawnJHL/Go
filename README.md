@@ -8,7 +8,7 @@ STATIC TYPE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)
 
 ### Resources
 ---
-PACKAGE
+PACKAGE  
 https://go.dev/
 
 TUTORIALS  

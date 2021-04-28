@@ -8,6 +8,10 @@ STATIC TYPE - TYPE OF A VARIABLE CANNOT CHANGE (MOST OF THE TIME)
 
 ### Resources
 ---
+PACKAGE
+https://go.dev/
+
+TUTORIALS  
 sentdex - https://www.youtube.com/playlist?list=PLQVvvaa0QuDeF3hP0wQoSxpkqgRcgxMqX  
 Tech With Tim - https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q  
 
